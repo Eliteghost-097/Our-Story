@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Minds</title>
+  
+  <!-- Fonts for the soul's library -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@100;200;300&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 📚 The Library of Two Souls */
+    :root {
+      --vellum: #F7F1E1;
+      --aged-paper: #ECE6D6;
+      --ink-well: #4B3F3F;
+      --sepia: #8C7A6B;
+      --gilded-edge: #D4AF37;
+      --book-cloth: #3A2C2C;
+      --rose-petal: #F8D7D7;
+      --lilac-thought: #D8C1E3;
+      --tea-stain: #B8A089;
+      --candle-smoke: rgba(75, 63, 63, 0.1);
+      --heart-ink: #C44569;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 300vh;
+      background: 
+        radial-gradient(ellipse at top left, var(--aged-paper) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, #E8DFCB 0%, transparent 70%),
+        linear-gradient(180deg, var(--vellum) 0%, #F0E9D8 30%, #E8DFCB 70%, var(--vellum) 100%);
+      color: var(--ink-well);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Global Navigation */
+    .global-nav {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-home {
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .nav-home:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .nav-dots {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot:hover {
+      transform: scale(1.5);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-dot.active {
+      background: rgba(255, 255, 255, 0.9);
+      transform: scale(1.5);
+    }
+
+    /* Page Navigation */
+    .page-navigation {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 2rem;
+      background: rgba(247, 243, 227, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 30px;
+      color: var(--ink-well);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .nav-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 📖 The Book of Us */
+    .book-spine {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 400px;
+      background: linear-gradient(90deg, var(--book-cloth), #2A1F1F);
+      border-radius: 4px;
+      z-index: 10;
+      box-shadow: 
+        5px 0 20px rgba(0, 0, 0, 0.2),
+        inset -2px 0 0 rgba(212, 175, 55, 0.3);
+    }
+
+    .book-spine::after {
+      content: 'Our Minds';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate(10px, -50%) rotate(90deg);
+      transform-origin: left center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      color: var(--gilded-edge);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* 🕯️ Study Candles */
+    .study-candles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .reading-candle {
+      position: absolute;
+      width: 4px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--sepia), transparent);
+      filter: blur(0.5px);
+    }
+
+    .candle-smoke {
+      position: absolute;
+      width: 20px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, var(--candle-smoke) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: smokeRise 8s linear infinite;
+    }
+
+    /* ✨ Floating Thoughts */
+    .floating-thoughts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .thought-bubble {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--lilac-thought);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(0.8px);
+    }
+
+    /* 📜 The Reading Room */
+    .reading-room {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .library-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--book-cloth);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .library-title::before,
+    .library-title::after {
+      content: '❧';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--gilded-edge);
+      opacity: 0.6;
+    }
+
+    .library-title::before { left: -3rem; }
+    .library-title::after { right: -3rem; }
+
+    .room-subtitle {
+      font-family: 'Cormorant Garamond', italic;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--sepia);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .room-subtitle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sepia), transparent);
+    }
+
+    .room-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sepia), transparent);
+    }
+
+    /* 📜 The Quill Invitation */
+    .quill-invitation {
+      position: absolute;
+      bottom: 8rem; /* Adjusted for navigation */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: quillFloat 8s ease-in-out infinite;
+    }
+
+    .quill {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+
+    .quill-stem {
+      width: 2px;
+      height: 30px;
+      background: var(--sepia);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .quill-feather {
+      width: 20px;
+      height: 15px;
+      background: var(--rose-petal);
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: featherRustle 3s ease-in-out infinite;
+    }
+
+    .quill-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--heart-ink);
+      letter-spacing: 0.1em;
+    }
+
+    /* 📖 The Quote Manuscript */
+    .quote-manuscript {
+      position: relative;
+      z-index: 6;
+      max-width: 800px;
+      margin: 100vh auto 0;
+      padding: 6rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quote-page {
+      background: var(--vellum);
+      padding: 4rem 3rem;
+      border-radius: 2px;
+      box-shadow: 
+        0 20px 60px rgba(75, 63, 63, 0.1),
+        0 1px 0 rgba(212, 175, 55, 0.2) inset,
+        0 -1px 0 rgba(212, 175, 55, 0.2) inset;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px) rotate(0.5deg);
+      transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .quote-page.visible {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+
+    /* 📜 Page Details */
+    .page-wear {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .corner-wear {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at top left, var(--tea-stain) 0%, transparent 70%);
+      top: 0;
+      left: 0;
+      border-radius: 2px 0 0 0;
+    }
+
+    .edge-wear {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gilded-edge), transparent 30%, transparent 70%, var(--gilded-edge));
+      opacity: 0.3;
+    }
+
+    .foxing-spot {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: var(--tea-stain);
+      border-radius: 50%;
+      opacity: 0.1;
+      filter: blur(2px);
+    }
+
+    /* ✍️ The Quotes */
+    .quote-text {
+      font-family: 'Cardo', serif;
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: var(--ink-well);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .quote-text::before {
+      content: '“';
+      position: absolute;
+      left: -1rem;
+      top: -1rem;
+      font-size: 4rem;
+      color: var(--rose-petal);
+      opacity: 0.5;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .quote-author {
+      font-family: 'Cormorant Garamond', italic;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--sepia);
+      text-align: right;
+      padding-right: 2rem;
+      position: relative;
+    }
+
+    .quote-author::before {
+      content: '—';
+      margin-right: 0.5rem;
+      color: var(--heart-ink);
+    }
+
+    /* 💭 Your Personal Thoughts */
+    .personal-reflection {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(248, 215, 215, 0.1);
+      border-left: 3px solid var(--lilac-thought);
+      position: relative;
+      transform: translateX(-20px);
+      opacity: 0;
+      transition: all 0.8s ease 0.3s;
+    }
+
+    .quote-page.visible .personal-reflection {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .reflection-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--ink-well);
+      font-weight: 300;
+    }
+
+    .reflection-heart {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--heart-ink);
+      font-size: 1.2rem;
+      opacity: 0.6;
+    }
+
+    /* 🎭 Quote Navigation */
+    .quote-navigation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 7;
+      pointer-events: none;
+    }
+
+    .nav-arrow {
+      width: 60px;
+      height: 60px;
+      background: rgba(247, 241, 225, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 5px 15px rgba(75, 63, 63, 0.1),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-arrow:hover {
+      transform: scale(1.1);
+      background: rgba(248, 215, 215, 0.9);
+      box-shadow: 
+        0 8px 25px rgba(196, 69, 105, 0.2),
+        0 0 0 1px var(--rose-petal);
+    }
+
+    .nav-arrow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-arrow:hover::before {
+      opacity: 1;
+    }
+
+    .arrow-icon {
+      font-size: 2rem;
+      color: var(--sepia);
+      transition: all 0.3s ease;
+    }
+
+    .nav-arrow:hover .arrow-icon {
+      color: var(--heart-ink);
+      transform: scale(1.2);
+    }
+
+    .quote-counter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--sepia);
+      background: rgba(247, 241, 225, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(75, 63, 63, 0.1);
+      pointer-events: auto;
+      backdrop-filter: blur(5px);
+    }
+
+    /* 🌸 Thought Blooms */
+    .thought-bloom {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--lilac-thought);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+    }
+
+    /* 📝 Highlighted Words */
+    .soul-word {
+      position: relative;
+      color: var(--heart-ink);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 2px;
+    }
+
+    .soul-word:hover {
+      background: rgba(248, 215, 215, 0.3);
+      border-radius: 2px;
+    }
+
+    .soul-word::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--lilac-thought);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .soul-word:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* 🎭 Animations with Thought */
+    @keyframes smokeRise {
+      0% { 
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      100% { 
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes quillFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(0deg); }
+      75% { transform: translateY(-5px) rotate(1deg); }
+    }
+
+    @keyframes featherRustle {
+      0%, 100% { transform: translateX(-50%) rotate(0deg) scale(1); }
+      50% { transform: translateX(-50%) rotate(5deg) scale(1.1); }
+    }
+
+    @keyframes thoughtBloom {
+      0% { 
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+      }
+      50% { 
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+      }
+      100% { 
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+      }
+    }
+
+    @keyframes wordGlow {
+      0%, 100% { text-shadow: 0 0 0 transparent; }
+      50% { text-shadow: 0 0 10px rgba(248, 215, 215, 0.5); }
+    }
+
+    /* 📱 For Quiet Reading */
+    @media (max-width: 768px) {
+      .book-spine {
+        left: 1rem;
+        height: 300px;
+      }
+      
+      .quote-page {
+        padding: 3rem 2rem;
+      }
+      
+      .quote-text {
+        font-size: 1.4rem;
+        padding-left: 1.5rem;
+      }
+      
+      .quote-text::before {
+        left: -0.5rem;
+        font-size: 3rem;
+      }
+      
+      .nav-arrow {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .quote-navigation {
+        width: 95%;
+      }
+      
+      .global-nav {
+        top: 1rem;
+        padding: 0.6rem 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-btn {
+        padding: 0.6rem 1.5rem;
+        min-width: 100px;
+      }
+      
+      .quill-invitation {
+        bottom: 10rem; /* More space for mobile */
+      }
+    }
+
+    /* 📚 For Deep Study */
+    @media (min-width: 1200px) {
+      .quote-manuscript {
+        max-width: 900px;
+      }
+      
+      .quote-text {
+        font-size: 1.8rem;
+        line-height: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation -->
+  <div class="global-nav">
+    <div class="nav-home" onclick="goToPage('index.html')">🏠</div>
+    <div class="nav-dots">
+      <div class="nav-dot" onclick="goToPage('Our Beginning.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Harmony.html')"></div>
+      <div class="nav-dot active" onclick="goToPage('Our Minds.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Forever.html')"></div>
+    </div>
+  </div>
+
+  <!-- 📖 The Book of Us -->
+  <div class="book-spine"></div>
+
+  <!-- 🕯️ Study Candles -->
+  <div class="study-candles" id="studyCandles"></div>
+
+  <!-- ✨ Floating Thoughts -->
+  <div class="floating-thoughts" id="floatingThoughts"></div>
+
+  <!-- 📜 The Reading Room -->
+  <section class="reading-room">
+    <h1 class="library-title">Our Minds</h1>
+    <p class="room-subtitle">Where thoughts meet, words dance, and two souls read from the same page of the universe</p>
+    
+    <div class="quill-invitation">
+      <div class="quill">
+        <div class="quill-stem"></div>
+        <div class="quill-feather"></div>
+      </div>
+      <div class="quill-text">Turn the page of our thoughts</div>
+    </div>
+  </section>
+
+  <!-- 📖 The Quote Manuscript -->
+  <div class="quote-manuscript" id="quoteManuscript">
+    <!-- Page 1 -->
+    <div class="quote-page visible" id="quotePage1">
+      <div class="page-wear corner-wear"></div>
+      <div class="page-wear edge-wear"></div>
+      <div class="foxing-spot" style="top: 30%; left: 20%;"></div>
+      <div class="foxing-spot" style="bottom: 20%; right: 25%;"></div>
+      
+      <div class="quote-text">
+        "We loved with a love that was more than love. <span class="soul-word">I and my Annabel Lee</span>—With a love that the winged seraphs of Heaven Coveted her and me."
+      </div>
+      
+      <div class="quote-author">
+        Edgar Allan Poe, "Annabel Lee"
+      </div>
+      
+      <div class="personal-reflection">
+        <div class="reflection-heart">♥</div>
+        <p class="reflection-text">
+          This is how it feels—like angels themselves might envy what we share. Not just love, but a <span class="soul-word">story</span> written in some cosmic language only we understand. When I read these lines, I don't see Poe's lost love—I see our <span class="soul-word">found</span> one.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Page 2 (hidden initially) -->
+    <div class="quote-page" id="quotePage2">
+      <div class="page-wear corner-wear"></div>
+      <div class="page-wear edge-wear"></div>
+      
+      <div class="quote-text">
+        "To love is to recognize yourself in another. The <span class="soul-word">other</span> is the mirror in which you see yourself. Without the other, you do not see yourself."
+      </div>
+      
+      <div class="quote-author">
+        Marya Bolkonskaya, "War and Peace"
+      </div>
+      
+      <div class="personal-reflection">
+        <div class="reflection-heart">♥</div>
+        <p class="reflection-text">
+          You are the mirror where I found parts of myself I never knew existed. In your eyes, I see not just my reflection, but my <span class="soul-word">becoming</span>. The person I want to be exists because you believe I already am him.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Page 3 -->
+    <div class="quote-page" id="quotePage3">
+      <div class="page-wear corner-wear"></div>
+      <div class="page-wear edge-wear"></div>
+      
+      <div class="quote-text">
+        "I have spread my dreams under your feet;<br>Tread softly because you tread on my dreams."
+      </div>
+      
+      <div class="quote-author">
+        W.B. Yeats, "He Wishes for the Cloths of Heaven"
+      </div>
+      
+      <div class="personal-reflection">
+        <div class="reflection-heart">♥</div>
+        <p class="reflection-text">
+          Every fragile hope, every quiet dream I've ever had—I've laid them all at your feet. And you walk with such gentle steps, as if you know how precious these fragile things are. You don't just <span class="soul-word">accept</span> my dreams; you help me believe they could be real.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Page 4 -->
+    <div class="quote-page" id="quotePage4">
+      <div class="page-wear corner-wear"></div>
+      <div class="page-wear edge-wear"></div>
+      
+      <div class="quote-text">
+        "The half of me that's you is beautiful. The half of you that's me sees it. Together we are <span class="soul-word">whole</span>."
+      </div>
+      
+      <div class="quote-author">
+        Rumi
+      </div>
+      
+      <div class="personal-reflection">
+        <div class="reflection-heart">♥</div>
+        <p class="reflection-text">
+          I used to think wholeness was something you achieved alone. Then I met you, and realized: wholeness is what happens when two incomplete people recognize that their <span class="soul-word">missing pieces</span> fit perfectly together. Not completing each other, but creating something entirely new.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Page 5 -->
+    <div class="quote-page" id="quotePage5">
+      <div class="page-wear corner-wear"></div>
+      <div class="page-wear edge-wear"></div>
+      
+      <div class="quote-text">
+        "Whatever our souls are made of, his and mine are the same."
+      </div>
+      
+      <div class="quote-author">
+        Emily Brontë, "Wuthering Heights"
+      </div>
+      
+      <div class="personal-reflection">
+        <div class="reflection-heart">♥</div>
+        <p class="reflection-text">
+          This one needs no elaboration. it simply <span class="soul-word">is</span>. When I read Catherine's words, I don't feel like I'm reading fiction. I feel like I'm reading our truth, written a century before we existed. Some connections are written in the fabric of reality itself.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎭 Quote Navigation -->
+  <div class="quote-navigation">
+    <div class="nav-arrow" id="prevArrow">
+      <div class="arrow-icon">‹</div>
+    </div>
+    
+    <div class="quote-counter" id="quoteCounter">1 / 5</div>
+    
+    <div class="nav-arrow" id="nextArrow">
+      <div class="arrow-icon">›</div>
+    </div>
+  </div>
+
+  <!-- Page Navigation -->
+  <div class="page-navigation">
+    <button class="nav-btn prev-btn" onclick="goToPage('Our Harmony.html')">
+      ← Previous: Our Harmony
+    </button>
+    <button class="nav-btn next-btn" onclick="goToPage('Our Forever.html')">
+      Next: Our Forever →
+    </button>
+  </div>
+
+  <!-- 🌸 Thought Blooms Container -->
+  <div id="thoughtBlooms"></div>
+
+  <script>
+    // 📚 The Library Comes Alive
+    const candlesContainer = document.getElementById('studyCandles');
+    const thoughtsContainer = document.getElementById('floatingThoughts');
+    const bloomsContainer = document.getElementById('thoughtBlooms');
+    
+    // 🕯️ Create Study Candles
+    const candlePositions = [
+      { left: '15%', top: '20%' },
+      { left: '85%', top: '30%' },
+      { left: '20%', top: '70%' },
+      { left: '80%', top: '80%' }
+    ];
+    
+    candlePositions.forEach((pos, index) => {
+      const candle = document.createElement('div');
+      candle.className = 'reading-candle';
+      candle.style.left = pos.left;
+      candle.style.top = pos.top;
+      candle.style.opacity = 0.4 + Math.random() * 0.3;
+      
+      const smoke = document.createElement('div');
+      smoke.className = 'candle-smoke';
+      smoke.style.left = '-8px';
+      smoke.style.bottom = '60px';
+      smoke.style.animationDelay = `${index * 2}s`;
+      
+      candle.appendChild(smoke);
+      candlesContainer.appendChild(candle);
+    });
+    
+    // ✨ Create Floating Thoughts
+    const thoughtCount = 15;
+    
+    for (let i = 0; i < thoughtCount; i++) {
+      const thought = document.createElement('div');
+      thought.className = 'thought-bubble';
+      
+      const startLeft = Math.random() * 100;
+      const endLeft = startLeft + (Math.random() * 20 - 10);
+      
+      thought.style.left = `${startLeft}%`;
+      thought.style.top = `${110 + Math.random() * 20}%`;
+      thought.style.background = Math.random() > 0.5 ? 'var(--lilac-thought)' : 'var(--rose-petal)';
+      thought.style.opacity = 0.3 + Math.random() * 0.4;
+      thought.style.scale = 0.5 + Math.random();
+      
+      thoughtsContainer.appendChild(thought);
+      
+      // Animate thought floating up
+      const duration = 20 + Math.random() * 20;
+      const delay = Math.random() * 10;
+      
+      thought.animate([
+        { 
+          transform: `translate(0, 0) scale(1)`,
+          opacity: 0
+        },
+        { 
+          transform: `translate(${endLeft - startLeft}vw, -120vh) scale(${0.5 + Math.random()})`,
+          opacity: 0.6
+        },
+        { 
+          transform: `translate(${(endLeft - startLeft) * 1.5}vw, -150vh) scale(0.2)`,
+          opacity: 0
+        }
+      ], {
+        duration: duration * 1000,
+        delay: delay * 1000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        iterations: Infinity
+      });
+    }
+    
+    // 📖 Quote Navigation
+    const quotePages = document.querySelectorAll('.quote-page');
+    const prevArrow = document.getElementById('prevArrow');
+    const nextArrow = document.getElementById('nextArrow');
+    const quoteCounter = document.getElementById('quoteCounter');
+    
+    let currentPage = 0;
+    const totalPages = quotePages.length;
+    
+    function showPage(index) {
+      // Hide all pages
+      quotePages.forEach(page => {
+        page.classList.remove('visible');
+        page.style.zIndex = '1';
+      });
+      
+      // Show current page
+      quotePages[index].classList.add('visible');
+      quotePages[index].style.zIndex = '2';
+      
+      // Update counter
+      quoteCounter.textContent = `${index + 1} / ${totalPages}`;
+      
+      // Create thought blooms for this page
+      createThoughtBlooms();
+      
+      // Highlight animation for soul words
+      const soulWords = quotePages[index].querySelectorAll('.soul-word');
+      soulWords.forEach((word, i) => {
+        setTimeout(() => {
+          word.style.animation = 'wordGlow 2s ease-in-out';
+          setTimeout(() => {
+            word.style.animation = '';
+          }, 2000);
+        }, i * 300);
+      });
+      
+      currentPage = index;
+      
+      // Update arrow states
+      prevArrow.style.opacity = index === 0 ? '0.5' : '1';
+      nextArrow.style.opacity = index === totalPages - 1 ? '0.5' : '1';
+    }
+    
+    // 🌸 Create Thought Blooms
+    function createThoughtBlooms() {
+      // Clear previous blooms
+      bloomsContainer.innerHTML = '';
+      
+      const currentPageRect = quotePages[currentPage].getBoundingClientRect();
+      const bloomCount = 8 + Math.floor(Math.random() * 8);
+      
+      for (let i = 0; i < bloomCount; i++) {
+        const bloom = document.createElement('div');
+        bloom.className = 'thought-bloom';
+        
+        const x = currentPageRect.left + Math.random() * currentPageRect.width;
+        const y = currentPageRect.top + Math.random() * currentPageRect.height;
+        const size = 3 + Math.random() * 6;
+        const color = Math.random() > 0.5 ? 'var(--lilac-thought)' : 'var(--rose-petal)';
+        const delay = Math.random() * 1;
+        
+        bloom.style.left = `${x}px`;
+        bloom.style.top = `${y}px`;
+        bloom.style.width = `${size}px`;
+        bloom.style.height = `${size}px`;
+        bloom.style.background = color;
+        
+        bloomsContainer.appendChild(bloom);
+        
+        // Animate bloom
+        bloom.animate([
+          { 
+            opacity: 0,
+            transform: `scale(0) rotate(0deg)`
+          },
+          { 
+            opacity: 0.8,
+            transform: `scale(1) rotate(180deg)`
+          },
+          { 
+            opacity: 0,
+            transform: `scale(0) rotate(360deg)`
+          }
+        ], {
+          duration: 2000,
+          delay: delay * 1000,
+          easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+        }).onfinish = () => bloom.remove();
+      }
+    }
+    
+    // 📖 Navigation Event Listeners
+    prevArrow.addEventListener('click', () => {
+      if (currentPage > 0) {
+        showPage(currentPage - 1);
+        // Create page turn effect
+        createPageTurnEffect('left');
+      }
+    });
+    
+    nextArrow.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        showPage(currentPage + 1);
+        // Create page turn effect
+        createPageTurnEffect('right');
+      }
+    });
+    
+    // 📄 Page Turn Effect
+    function createPageTurnEffect(direction) {
+      const effect = document.createElement('div');
+      effect.style.position = 'fixed';
+      effect.style.top = '0';
+      effect.style.left = direction === 'right' ? '0' : 'auto';
+      effect.style.right = direction === 'left' ? '0' : 'auto';
+      effect.style.width = '100%';
+      effect.style.height = '100%';
+      effect.style.background = `linear-gradient(to ${direction === 'right' ? 'left' : 'right'}, 
+        transparent 0%,
+        rgba(248, 215, 215, 0.1) 30%,
+        rgba(216, 193, 227, 0.2) 50%,
+        rgba(248, 215, 215, 0.1) 70%,
+        transparent 100%)`;
+      effect.style.zIndex = '8';
+      effect.style.pointerEvents = 'none';
+      
+      document.body.appendChild(effect);
+      
+      effect.animate([
+        { transform: `translateX(${direction === 'right' ? '100%' : '-100%'})`, opacity: 0 },
+        { transform: 'translateX(0)', opacity: 0.6 },
+        { transform: `translateX(${direction === 'right' ? '-100%' : '100%'})`, opacity: 0 }
+      ], {
+        duration: 800,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }).onfinish = () => effect.remove();
+    }
+    
+    // 🖱️ Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && currentPage > 0) {
+        showPage(currentPage - 1);
+        createPageTurnEffect('left');
+      } else if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+        showPage(currentPage + 1);
+        createPageTurnEffect('right');
+      }
+    });
+    
+    // 📝 Soul Word Interactions
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('soul-word')) {
+        const word = e.target;
+        const rect = word.getBoundingClientRect();
+        
+        // Create word bloom
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            const bloom = document.createElement('div');
+            bloom.className = 'thought-bloom';
+            
+            const x = rect.left + Math.random() * rect.width;
+            const y = rect.top + Math.random() * rect.height;
+            
+            bloom.style.left = `${x}px`;
+            bloom.style.top = `${y}px`;
+            bloom.style.background = word.style.color || 'var(--heart-ink)';
+            
+            bloomsContainer.appendChild(bloom);
+            
+            bloom.animate([
+              { opacity: 0, transform: 'scale(0)' },
+              { opacity: 1, transform: 'scale(1)' },
+              { opacity: 0, transform: 'scale(2)' }
+            ], {
+              duration: 1000,
+              easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            }).onfinish = () => bloom.remove();
+          }, i * 100);
+        }
+        
+        // Pulse the word
+        word.animate([
+          { color: 'var(--heart-ink)' },
+          { color: 'var(--lilac-thought)' },
+          { color: 'var(--heart-ink)' }
+        ], {
+          duration: 1000,
+          easing: 'ease-in-out'
+        });
+      }
+    });
+    
+    // 📜 Scroll-based Candle Flicker
+    let lastScrollY = 0;
+    
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const scrollDelta = Math.abs(scrollY - lastScrollY);
+      
+      // Make candles flicker based on scroll speed
+      if (scrollDelta > 10) {
+        const candles = document.querySelectorAll('.reading-candle');
+        candles.forEach(candle => {
+          const originalOpacity = parseFloat(candle.style.opacity) || 0.6;
+          candle.style.opacity = (originalOpacity * (0.7 + Math.random() * 0.6)).toFixed(2);
+          
+          setTimeout(() => {
+            candle.style.opacity = originalOpacity;
+          }, 200);
+        });
+      }
+      
+      lastScrollY = scrollY;
+      
+      // Show/hide navigation based on scroll
+      const nav = document.querySelector('.quote-navigation');
+      const quoteRect = document.querySelector('#quoteManuscript').getBoundingClientRect();
+      
+      if (quoteRect.top < window.innerHeight * 0.8 && quoteRect.bottom > window.innerHeight * 0.2) {
+        nav.style.opacity = '1';
+        nav.style.pointerEvents = 'auto';
+      } else {
+        nav.style.opacity = '0';
+        nav.style.pointerEvents = 'none';
+      }
+    }
+    
+    // 📚 Initialize
+    window.addEventListener('load', () => {
+      showPage(0);
+      
+      // Initial thought blooms
+      setTimeout(createThoughtBlooms, 1000);
+      
+      // Fade in
+      requestAnimationFrame(() => {
+        document.body.style.opacity = '1';
+      });
+    });
+    
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // Initial call
+    
+    // 🎭 Auto-create blooms periodically
+    setInterval(createThoughtBlooms, 8000);
+    
+    // ✨ Random thought generation
+    setInterval(() => {
+      const thought = document.createElement('div');
+      thought.className = 'thought-bubble';
+      
+      thought.style.left = `${Math.random() * 100}%`;
+      thought.style.top = '110%';
+      thought.style.background = Math.random() > 0.5 ? 'var(--lilac-thought)' : 'var(--rose-petal)';
+      
+      thoughtsContainer.appendChild(thought);
+      
+      thought.animate([
+        { transform: 'translateY(0) scale(1)', opacity: 0 },
+        { transform: 'translateY(-20px) scale(1.2)', opacity: 0.6 },
+        { transform: 'translateY(-120vh) scale(0.5)', opacity: 0 }
+      ], {
+        duration: 15000 + Math.random() * 10000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }).onfinish = () => thought.remove();
+    }, 3000);
+
+    // Navigation Functions
+    function goToPage(page) {
+      // Add page transition effect
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        window.location.href = page;
+      }, 500);
+    }
+
+    // Update active dot based on current page
+    const currentPageName = window.location.pathname.split('/').pop();
+    const dots = document.querySelectorAll('.nav-dot');
+    const pageMap = {
+      'Our Beginning.html': 0,
+      'Our Harmony.html': 1,
+      'Our Minds.html': 2,
+      'Our Forever.html': 3
+    };
+
+    if (pageMap[currentPageName] !== undefined) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[pageMap[currentPageName]].classList.add('active');
+    }
+
+    // Keyboard navigation for pages
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        goToPage('Our Harmony.html');
+      } else if (e.key === 'ArrowRight') {
+        goToPage('Our Forever.html');
+      }
+    });
+  </script>
+</body>
+</html>

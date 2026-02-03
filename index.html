@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, My Princess</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@100;200;300;400&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #1B3B2D 0%, #2A1B3D 50%, #1A1523 100%);
+            font-family: 'Inter', sans-serif;
+            color: #F7F3E3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: floatHeart 8s linear infinite;
+        }
+
+        .title-container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #F8D7D7, #D8C1E3, #A3D2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #B7D7C8;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .journey-menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .journey-card {
+            background: rgba(247, 243, 227, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(248, 215, 215, 0.15);
+            border-color: rgba(163, 210, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+
+        .card-1 { border-left: 4px solid #B7D7C8; }
+        .card-2 { border-left: 4px solid #D4AF37; }
+        .card-3 { border-left: 4px solid #8C7A6B; }
+        .card-4 { border-left: 4px solid #F8D7D7; }
+
+        .begin-btn {
+            margin-top: 3rem;
+            padding: 1rem 3rem;
+            background: rgba(196, 69, 105, 0.2);
+            border: 2px solid rgba(196, 69, 105, 0.4);
+            border-radius: 50px;
+            color: #F8D7D7;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .begin-btn:hover {
+            background: rgba(196, 69, 105, 0.3);
+            transform: scale(1.05);
+            letter-spacing: 0.15em;
+            box-shadow: 0 0 20px rgba(196, 69, 105, 0.3);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .journey-menu {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .journey-card {
+                min-height: 150px;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="love-particles" id="loveParticles"></div>
+
+    <!-- Main Content -->
+    <div class="title-container">
+        <h1 class="main-title">For You, My Princess</h1>
+        <p class="subtitle">A journey through our little world, where every moment is a treasure</p>
+        
+        <div class="journey-menu">
+            <div class="journey-card card-1" onclick="goToPage('Our Beginning.html')">
+                <div class="card-icon">🌊</div>
+                <h3 class="card-title">Our Beginning</h3>
+                <p class="card-description">Two souls drifting until they found each other</p>
+            </div>
+            
+            <div class="journey-card card-2" onclick="goToPage('Our Harmony.html')">
+                <div class="card-icon">🎹</div>
+                <h3 class="card-title">Our Harmony</h3>
+                <p class="card-description">The music that plays when our hearts beat together</p>
+            </div>
+            
+            <div class="journey-card card-3" onclick="goToPage('Our Minds.html')">
+                <div class="card-icon">📖</div>
+                <h3 class="card-title">Our Minds</h3>
+                <p class="card-description">Where thoughts meet and words become poetry</p>
+            </div>
+            
+            <div class="journey-card card-4" onclick="goToPage('Our Forever.html')">
+                <div class="card-icon">💐</div>
+                <h3 class="card-title">Our Forever</h3>
+                <p class="card-description">The promise that turns moments into eternity</p>
+            </div>
+        </div>
+        
+        <button class="begin-btn" onclick="startJourney()">Begin Our Journey</button>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const particlesContainer = document.getElementById('loveParticles');
+        const heartCount = 20;
+        
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            
+            const left = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = 6 + Math.random() * 4;
+            const size = 0.5 + Math.random() * 1;
+            
+            heart.style.left = `${left}%`;
+            heart.style.animationDelay = `${delay}s`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.fontSize = `${size}rem`;
+            heart.style.opacity = 0.3 + Math.random() * 0.4;
+            
+            particlesContainer.appendChild(heart);
+        }
+        
+        function goToPage(page) {
+            // Add transition effect
+            document.body.style.opacity = '0.5';
+            document.body.style.transform = 'scale(0.95)';
+            document.body.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                window.location.href = page;
+            }, 500);
+        }
+        
+        function startJourney() {
+            goToPage('Our Beginning.html');
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '1' && e.key <= '4') {
+                const pages = ['Our beginning.html', 'Our Harmony.html', 'Our Minds.html', 'Our Forever.html'];
+                goToPage(pages[parseInt(e.key) - 1]);
+            }
+        });
+        
+        // Make cards focusable for accessibility
+        document.querySelectorAll('.journey-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    card.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

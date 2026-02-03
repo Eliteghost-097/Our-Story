@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Forever</title>
+  
+  <!-- Fonts for eternity -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@100;200;300&family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🌅 The Dawn of Forever */
+    :root {
+      --dawn-sky: #EDE6F2;
+      --morning-light: #FFF9F0;
+      --first-sunbeam: #FFE8B8;
+      --eternity-blue: #A3D2FF;
+      --forever-pink: #F8D7D7;
+      --promise-lilac: #D8C1E3;
+      --gypsophila-white: #FFFFFF;
+      --lily-softness: #FFF5F5;
+      --vase-clarity: rgba(255, 255, 255, 0.3);
+      --shadow-soft: rgba(140, 122, 107, 0.1);
+      --golden-hour: #D4AF37;
+      --heartbeat-red: #C44569;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 400vh;
+      background: 
+        radial-gradient(ellipse at top, var(--morning-light) 0%, transparent 70%),
+        radial-gradient(ellipse at 30% 20%, var(--promise-lilac) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, var(--forever-pink) 0%, transparent 60%),
+        linear-gradient(180deg, 
+          var(--dawn-sky) 0%, 
+          #F5EDF9 20%,
+          #F0E6F5 40%,
+          #EBDFF0 60%,
+          #E6D8EC 80%,
+          var(--dawn-sky) 100%);
+      color: #4B3F3F;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      opacity: 0;
+      animation: dawnBreaks 3s ease-out forwards;
+    }
+
+    /* 🌸 The Petal Storm of Promises */
+    .promise-petals {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--gypsophila-white);
+      border-radius: 50% 0 50% 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(0.5px);
+      transform-origin: center;
+    }
+
+    .lily-petal {
+      background: linear-gradient(135deg, var(--forever-pink), var(--lily-softness));
+      width: 25px;
+      height: 25px;
+      border-radius: 50% 50% 0 50%;
+    }
+
+    /* ✨ The Stardust of Forever */
+    .forever-stardust {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .stardust-particle {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: var(--first-sunbeam);
+      border-radius: 50%;
+      opacity: 0;
+      animation: stardustTwinkle 8s infinite;
+    }
+
+    /* 🏛️ The Temple of Us */
+    .forever-temple {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .temple-title {
+      font-family: 'Parisienne', cursive;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: transparent;
+      background: linear-gradient(120deg, 
+        var(--heartbeat-red) 10%,
+        var(--forever-pink) 30%,
+        var(--promise-lilac) 50%,
+        var(--eternity-blue) 70%,
+        var(--first-sunbeam) 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 
+        0 0 40px rgba(196, 69, 105, 0.2),
+        0 0 80px rgba(163, 210, 255, 0.1);
+      margin-bottom: 1.5rem;
+      animation: titleGlow 12s ease-in-out infinite;
+      position: relative;
+    }
+
+    .temple-title::after {
+      content: '∞';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: var(--golden-hour);
+      opacity: 0.5;
+      animation: infinitySpin 20s linear infinite;
+    }
+
+    .temple-subtitle {
+      font-family: 'Cormorant Garamond', italic;
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: #8C7A6B;
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .temple-subtitle::before {
+      content: '❀';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: var(--forever-pink);
+      animation: flowerBlink 4s ease-in-out infinite;
+    }
+
+    .temple-subtitle::after {
+      content: '❀';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: var(--promise-lilac);
+      animation: flowerBlink 4s ease-in-out infinite reverse;
+    }
+
+    /* 💌 The Scroll of Forever */
+    .forever-scroll {
+      position: absolute;
+      bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: scrollBreathes 6s ease-in-out infinite;
+    }
+
+    .scroll-container {
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(to bottom, 
+        transparent, 
+        var(--heartbeat-red), 
+        var(--golden-hour), 
+        transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-heart {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: var(--heartbeat-red);
+      border-radius: 50%;
+      animation: heartDescends 3s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--heartbeat-red);
+    }
+
+    .scroll-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--heartbeat-red);
+      letter-spacing: 0.1em;
+    }
+
+    /* 💐 The Living Bouquet */
+    .bouquet-sanctuary {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 800px;
+      height: 70vh;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+
+    .crystal-vase {
+      width: 200px;
+      height: 300px;
+      background: var(--vase-clarity);
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      backdrop-filter: blur(10px);
+      box-shadow: 
+        0 20px 60px var(--shadow-soft),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      pointer-events: auto;
+      cursor: pointer;
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .crystal-vase:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 
+        0 30px 80px rgba(196, 69, 105, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .crystal-vase::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .water-fill {
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      height: 80%;
+      background: linear-gradient(to top, 
+        rgba(163, 210, 255, 0.1),
+        rgba(163, 210, 255, 0.3));
+      border-radius: 15px 15px 0 0;
+      animation: waterShimmer 8s ease-in-out infinite;
+    }
+
+    .bouquet {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 250px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .flower {
+      position: absolute;
+      transform-origin: bottom center;
+    }
+
+    .gypsophila {
+      width: 8px;
+      height: 40px;
+      background: var(--gypsophila-white);
+      border-radius: 4px;
+      filter: blur(0.5px);
+    }
+
+    .gypsophila-cluster {
+      animation: clusterSway 6s ease-in-out infinite;
+    }
+
+    .lily {
+      width: 30px;
+      height: 60px;
+      background: linear-gradient(to top, 
+        var(--forever-pink) 0%,
+        var(--lily-softness) 100%);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      animation: lilyBreathes 8s ease-in-out infinite;
+    }
+
+    .lily-center {
+      width: 10px;
+      height: 15px;
+      background: var(--first-sunbeam);
+      border-radius: 50%;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: blur(1px);
+      animation: centerGlows 4s ease-in-out infinite;
+    }
+
+    /* 💝 The Note of Forever */
+    .forever-note {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 90%;
+      max-width: 500px;
+      padding: 4rem 3rem;
+      background: var(--morning-light);
+      border-radius: 4px;
+      box-shadow: 
+        0 40px 100px rgba(75, 63, 63, 0.2),
+        0 10px 30px rgba(196, 69, 105, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.2);
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+    }
+
+    .forever-note.revealed {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+      pointer-events: auto;
+    }
+
+    .note-paper {
+      position: relative;
+      min-height: 400px;
+      padding: 3rem;
+      background: 
+        linear-gradient(90deg, transparent 95%, rgba(140, 122, 107, 0.1) 100%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(140, 122, 107, 0.05) 24px,
+          rgba(140, 122, 107, 0.05) 25px
+        );
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .note-fold {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 40px;
+      height: 40px;
+      background: var(--morning-light);
+      border-radius: 2px;
+      transform: rotate(45deg);
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .note-fold::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: var(--heartbeat-red);
+      border-radius: 50%;
+      opacity: 0.3;
+      filter: blur(2px);
+    }
+
+    .handwriting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      line-height: 2;
+      color: #4B3F3F;
+      position: relative;
+    }
+
+    .handwriting-line {
+      position: relative;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: lineAppears 0.8s ease-out forwards;
+    }
+
+    .handwriting-line:nth-child(1) { animation-delay: 0.3s; }
+    .handwriting-line:nth-child(2) { animation-delay: 0.6s; }
+    .handwriting-line:nth-child(3) { animation-delay: 0.9s; }
+    .handwriting-line:nth-child(4) { animation-delay: 1.2s; }
+    .handwriting-line:nth-child(5) { animation-delay: 1.5s; }
+    .handwriting-line:nth-child(6) { animation-delay: 1.8s; }
+
+    .ink-blot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--heartbeat-red);
+      border-radius: 50%;
+      opacity: 0.1;
+      filter: blur(3px);
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 4rem;
+      padding-right: 2rem;
+      position: relative;
+      opacity: 0;
+      animation: signatureAppears 1s ease-out 2.5s forwards;
+    }
+
+    .signature::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--golden-hour), transparent);
+    }
+
+    /* 🎊 The Celebration */
+    .celebration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      animation: confettiFall 3s ease-out forwards;
+    }
+
+    .sparkle-burst {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, 
+        var(--first-sunbeam) 0%,
+        transparent 70%);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(10px);
+      animation: burstExpands 2s ease-out forwards;
+    }
+
+    /* 📜 The Forever Story */
+    .forever-story {
+      position: relative;
+      z-index: 6;
+      max-width: 800px;
+      margin: 100vh auto 0;
+      padding: 6rem 2rem;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #4B3F3F;
+    }
+
+    .story-paragraph {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .story-paragraph.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-highlight {
+      color: var(--heartbeat-red);
+      font-style: italic;
+      position: relative;
+      padding: 0 4px;
+    }
+
+    .story-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--forever-pink);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .story-highlight:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* 🎭 Animations of Forever */
+    @keyframes dawnBreaks {
+      0% { opacity: 0; filter: brightness(0.8); }
+      100% { opacity: 1; filter: brightness(1); }
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { 
+        filter: brightness(1) hue-rotate(0deg);
+        letter-spacing: 0.02em;
+      }
+      50% { 
+        filter: brightness(1.1) hue-rotate(10deg);
+        letter-spacing: 0.03em;
+      }
+    }
+
+    @keyframes infinitySpin {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    @keyframes flowerBlink {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+    }
+
+    @keyframes scrollBreathes {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes heartDescends {
+      0% { top: 0; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    @keyframes clusterSway {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-3px) rotate(-2deg); }
+      50% { transform: translateX(2px) rotate(1deg); }
+      75% { transform: translateX(-1px) rotate(-1deg); }
+    }
+
+    @keyframes lilyBreathes {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.1); }
+    }
+
+    @keyframes centerGlows {
+      0%, 100% { opacity: 0.7; filter: blur(1px); }
+      50% { opacity: 1; filter: blur(0.5px); }
+    }
+
+    @keyframes waterShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes stardustTwinkle {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+    }
+
+    @keyframes lineAppears {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes signatureAppears {
+      0% { opacity: 0; transform: translateX(20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes confettiFall {
+      0% { 
+        opacity: 0;
+        transform: translateY(-100px) rotate(0deg);
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    @keyframes burstExpands {
+      0% { 
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% { 
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      100% { 
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+
+    @keyframes petalFloat {
+      0% { 
+        opacity: 0;
+        transform: translateY(0) rotate(0deg);
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        opacity: 0;
+        transform: translateY(-100vh) rotate(720deg);
+      }
+    }
+
+    /* 📱 For Her Hands */
+    @media (max-width: 768px) {
+      .temple-title {
+        font-size: clamp(3rem, 8vw, 5rem);
+      }
+      
+      .temple-title::after {
+        right: -1.5rem;
+        font-size: 2rem;
+      }
+      
+      .crystal-vase {
+        width: 150px;
+        height: 250px;
+      }
+      
+      .bouquet {
+        width: 140px;
+        height: 200px;
+      }
+      
+      .forever-note {
+        padding: 3rem 2rem;
+      }
+      
+      .handwriting {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* 💖 For Her Heart */
+    @media (min-width: 1200px) {
+      .forever-story {
+        max-width: 900px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌸 Petal Storm -->
+  <div class="promise-petals" id="promisePetals"></div>
+
+  <!-- ✨ Stardust -->
+  <div class="forever-stardust" id="foreverStardust"></div>
+
+  <!-- 🏛️ The Temple -->
+  <section class="forever-temple">
+    <h1 class="temple-title">Our Forever</h1>
+    <p class="temple-subtitle">Where every moment until now was merely preparation. Where every promise finds its home. Where digital dreams become real-world magic.</p>
+    
+    <div class="forever-scroll">
+      <div class="scroll-container">
+        <div class="scroll-heart"></div>
+      </div>
+      <div class="scroll-text">Open your forever</div>
+    </div>
+  </section>
+
+  <!-- 💐 The Bouquet -->
+  <div class="bouquet-sanctuary">
+    <div class="crystal-vase" id="crystalVase">
+      <div class="water-fill"></div>
+    </div>
+    
+    <div class="bouquet" id="bouquet">
+      <!-- Gypsophila clusters -->
+      <div class="flower gypsophila gypsophila-cluster" style="left: 40px; bottom: 0; height: 120px;"></div>
+      <div class="flower gypsophila gypsophila-cluster" style="left: 60px; bottom: 20px; height: 140px; animation-delay: 0.5s;"></div>
+      <div class="flower gypsophila gypsophila-cluster" style="left: 80px; bottom: 10px; height: 130px; animation-delay: 1s;"></div>
+      <div class="flower gypsophila gypsophila-cluster" style="left: 100px; bottom: 0; height: 120px; animation-delay: 1.5s;"></div>
+      <div class="flower gypsophila gypsophila-cluster" style="left: 120px; bottom: 30px; height: 150px; animation-delay: 2s;"></div>
+      
+      <!-- Lilies -->
+      <div class="flower lily" style="left: 50px; bottom: 40px; height: 180px; animation-delay: 0.3s;">
+        <div class="lily-center"></div>
+      </div>
+      <div class="flower lily" style="left: 90px; bottom: 60px; height: 200px; animation-delay: 0.6s;">
+        <div class="lily-center"></div>
+      </div>
+      <div class="flower lily" style="left: 130px; bottom: 50px; height: 190px; animation-delay: 0.9s;">
+        <div class="lily-center"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 💝 The Note -->
+  <div class="forever-note" id="foreverNote">
+    <div class="note-fold"></div>
+    <div class="note-paper">
+      <div class="handwriting">
+        <div class="handwriting-line">My dearest love,</div>
+        <div class="handwriting-line">This digital journey was merely the invitation.</div>
+        <div class="handwriting-line">Now comes the real magic.</div>
+        <div class="handwriting-line">This Saturday, 7 PM. I'll arrive with these very flowers.</div>
+        <div class="handwriting-line">We'll dine at La Maison Douce—the French restaurant</div>
+        <div class="handwriting-line">where you said you felt Paris in the air.</div>
+        <div class="handwriting-line">Then, we'll drive to Crescent Point with the wool blanket</div>
+        <div class="handwriting-line">and stargaze until the constellations tell our story.</div>
+        <div class="handwriting-line">Bring only yourself. Everything else is already arranged.</div>
+        <div class="handwriting-line">This is not a date. This is the first page</div>
+        <div class="handwriting-line">of our forever.</div>
+        <div class="signature">
+          <div style="font-size: 2.2rem; color: var(--heartbeat-red);">Forever yours,</div>
+          <div style="font-size: 2.5rem; color: var(--golden-hour); margin-top: 0.5rem;">Omar</div>
+        </div>
+      </div>
+      
+      <!-- Ink blots -->
+      <div class="ink-blot" style="top: 100px; left: 30px;"></div>
+      <div class="ink-blot" style="bottom: 80px; right: 40px;"></div>
+    </div>
+  </div>
+
+  <!-- 🎊 Celebration -->
+  <div class="celebration" id="celebration"></div>
+
+  <!-- 📜 The Forever Story -->
+  <div class="forever-story" id="foreverStory">
+    <p class="story-paragraph">
+      Forever isn't a destination we reach. It's a <span class="story-highlight">choice we make every day</span>. It's in the morning messages, the shared silences, the inside jokes that no one else understands. It's in the way your hand finds mine without looking.
+    </p>
+    
+    <p class="story-paragraph">
+      This website was never just pixels and code. It was a <span class="story-highlight">love letter written in light</span>, a symphony composed in silence, a library built for two. But the most beautiful part? It was merely the prologue.
+    </p>
+    
+    <p class="story-highlight paragraph">
+      The real story begins when you close this tab. When the screen goes dark but the room feels brighter because you're in it. When digital confetti becomes real starlight. When typed words become whispered promises.
+    </p>
+    
+    <p class="story-paragraph">
+      Our forever started the moment our eyes first met. It deepened with every laugh, every conversation, every quiet understanding. And now, it steps out of the screen and into the world—<span class="story-highlight">tangible, real, waiting</span>.
+    </p>
+    
+    <p class="story-paragraph">
+      So let this be the last digital message before the real conversation begins. The flowers will be real. The food will be warm. The stars will be infinite. And my hand will be reaching for yours, not through fiber optics, but through air made sacred by your presence.
+    </p>
+  </div>
+
+  <script>
+    // 🌸 Create the Petal Storm
+    const petalsContainer = document.getElementById('promisePetals');
+    const petalCount = 80;
+    const petals = [];
+    
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.className = Math.random() > 0.7 ? 'petal lily-petal' : 'petal';
+      
+      const startLeft = Math.random() * 100;
+      const endLeft = startLeft + (Math.random() * 40 - 20);
+      const startDelay = Math.random() * 5;
+      const duration = 15 + Math.random() * 15;
+      const size = 10 + Math.random() * 15;
+      
+      petal.style.left = `${startLeft}%`;
+      petal.style.top = `${110 + Math.random() * 20}%`;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.opacity = 0.3 + Math.random() * 0.5;
+      
+      petalsContainer.appendChild(petal);
+      petals.push(petal);
+      
+      // Animate petal floating
+      petal.animate([
+        { 
+          transform: `translate(0, 0) rotate(0deg)`,
+          opacity: 0
+        },
+        { 
+          transform: `translate(${endLeft - startLeft}vw, -120vh) rotate(${360 + Math.random() * 360}deg)`,
+          opacity: petal.style.opacity
+        }
+      ], {
+        duration: duration * 1000,
+        delay: startDelay * 1000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        iterations: Infinity
+      });
+    }
+    
+    // ✨ Create Stardust
+    const stardustContainer = document.getElementById('foreverStardust');
+    const stardustCount = 50;
+    
+    for (let i = 0; i < stardustCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'stardust-particle';
+      
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 8}s`;
+      particle.style.opacity = 0.3 + Math.random() * 0.5;
+      
+      stardustContainer.appendChild(particle);
+    }
+    
+    // 💐 Bouquet Interaction
+    const crystalVase = document.getElementById('crystalVase');
+    const foreverNote = document.getElementById('foreverNote');
+    const celebration = document.getElementById('celebration');
+    const bouquet = document.getElementById('bouquet');
+    const storyParagraphs = document.querySelectorAll('.story-paragraph');
+    
+    let noteRevealed = false;
+    let celebrationActive = false;
+    
+    // Create additional petals on hover
+    crystalVase.addEventListener('mouseenter', () => {
+      if (!noteRevealed) {
+        // Make flowers breathe more deeply
+        const flowers = bouquet.querySelectorAll('.flower');
+        flowers.forEach(flower => {
+          const originalAnimation = flower.style.animation;
+          flower.style.animation = originalAnimation.replace('infinite', 'infinite alternate');
+        });
+        
+        // Create gentle petal fall from bouquet
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            createBouquetPetal();
+          }, i * 200);
+        }
+      }
+    });
+    
+    crystalVase.addEventListener('mouseleave', () => {
+      if (!noteRevealed) {
+        const flowers = bouquet.querySelectorAll('.flower');
+        flowers.forEach(flower => {
+          flower.style.animation = flower.style.animation.replace(' alternate', '');
+        });
+      }
+    });
+    
+    // 💝 Note Reveal
+    crystalVase.addEventListener('click', () => {
+      if (!noteRevealed) {
+        noteRevealed = true;
+        
+        // Reveal note with 3D flip
+        foreverNote.classList.add('revealed');
+        
+        // Start celebration after a moment
+        setTimeout(() => {
+          if (!celebrationActive) {
+            celebrationActive = true;
+            celebration.style.opacity = '1';
+            startCelebration();
+          }
+        }, 1500);
+        
+        // Make bouquet bloom
+        const lilies = bouquet.querySelectorAll('.lily');
+        lilies.forEach((lily, index) => {
+          setTimeout(() => {
+            lily.animate([
+              { transform: 'scaleY(1)' },
+              { transform: 'scaleY(1.3)' },
+              { transform: 'scaleY(1.1)' }
+            ], {
+              duration: 1000,
+              easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+            });
+          }, index * 200);
+        });
+        
+        // Create petal storm
+        createPetalStorm();
+        
+        // Scroll to note
+        setTimeout(() => {
+          foreverNote.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 500);
+      }
+    });
+    
+    // 🌸 Create Bouquet Petal
+    function createBouquetPetal() {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      
+      const startX = 90 + (Math.random() * 40 - 20);
+      const startY = window.innerHeight / 2 + 100;
+      const endX = startX + (Math.random() * 100 - 50);
+      const duration = 2000 + Math.random() * 1000;
+      const size = 8 + Math.random() * 12;
+      
+      petal.style.position = 'fixed';
+      petal.style.left = `${startX}px`;
+      petal.style.top = `${startY}px`;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
+      petal.style.opacity = 0.6;
+      petal.style.zIndex = '15';
+      petal.style.background = Math.random() > 0.5 ? 'var(--gypsophila-white)' : 'var(--forever-pink)';
+      
+      document.body.appendChild(petal);
+      
+      petal.animate([
+        { 
+          transform: 'translate(0, 0) rotate(0deg)',
+          opacity: 0.8
+        },
+        { 
+          transform: `translate(${endX - startX}px, -200px) rotate(${180 + Math.random() * 180}deg)`,
+          opacity: 0
+        }
+      ], {
+        duration: duration,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }).onfinish = () => petal.remove();
+    }
+    
+    // 🎊 Start Celebration
+    function startCelebration() {
+      // Confetti
+      const confettiCount = 150;
+      const confettiColors = [
+        'var(--heartbeat-red)',
+        'var(--forever-pink)',
+        'var(--promise-lilac)',
+        'var(--eternity-blue)',
+        'var(--first-sunbeam)',
+        'var(--golden-hour)'
+      ];
+      
+      for (let i = 0; i < confettiCount; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          
+          const left = Math.random() * 100;
+          const delay = Math.random() * 1;
+          const duration = 2 + Math.random() * 2;
+          const size = 6 + Math.random() * 8;
+          const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+          
+          confetti.style.left = `${left}%`;
+          confetti.style.width = `${size}px`;
+          confetti.style.height = `${size}px`;
+          confetti.style.background = color;
+          confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+          
+          celebration.appendChild(confetti);
+          
+          confetti.animate([
+            { 
+              transform: `translateY(-100px) rotate(0deg)`,
+              opacity: 0
+            },
+            { 
+              transform: `translateY(${Math.random() * 100}px) rotate(${180}deg)`,
+              opacity: 0.8
+            },
+            { 
+              transform: `translateY(100vh) rotate(${360}deg)`,
+              opacity: 0
+            }
+          ], {
+            duration: duration * 1000,
+            delay: delay * 1000,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }).onfinish = () => confetti.remove();
+        }, i * 20);
+      }
+      
+      // Sparkle bursts
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          createSparkleBurst();
+        }, i * 400);
+      }
+      
+      // Keep celebration going
+      setTimeout(() => {
+        if (celebrationActive) {
+          startCelebration();
+        }
+      }, 3000);
+    }
+    
+    // ✨ Create Sparkle Burst
+    function createSparkleBurst() {
+      const burst = document.createElement('div');
+      burst.className = 'sparkle-burst';
+      
+      const left = 20 + Math.random() * 60;
+      const top = 20 + Math.random() * 60;
+      
+      burst.style.left = `${left}%`;
+      burst.style.top = `${top}%`;
+      
+      celebration.appendChild(burst);
+      
+      burst.animate([
+        { transform: 'scale(0)', opacity: 0 },
+        { transform: 'scale(1)', opacity: 0.6 },
+        { transform: 'scale(2)', opacity: 0 }
+      ], {
+        duration: 2000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      }).onfinish = () => burst.remove();
+    }
+    
+    // 🌸 Create Petal Storm
+    function createPetalStorm() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          createBouquetPetal();
+        }, i * 100);
+      }
+    }
+    
+    // 📜 Story Reveal on Scroll
+    function revealStory() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      storyParagraphs.forEach((para, index) => {
+        const rect = para.getBoundingClientRect();
+        const revealPoint = windowHeight * 0.8;
+        
+        if (rect.top < revealPoint) {
+          setTimeout(() => {
+            para.classList.add('visible');
+          }, index * 300);
+        }
+      });
+      
+      // Vase rises with scroll
+      const vase = document.querySelector('.bouquet-sanctuary');
+      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.5));
+      vase.style.opacity = 1 - scrollProgress * 0.3;
+      vase.style.transform = `translate(-50%, -50%) translateY(${-scrollProgress * 50}px)`;
+      
+      // Note follows scroll slightly
+      if (noteRevealed) {
+        const noteProgress = Math.max(0, (scrollY - windowHeight * 0.7) / (windowHeight * 2));
+        foreverNote.style.transform = `translate(-50%, -50%) translateY(${noteProgress * -100}px) scale(${1 - noteProgress * 0.2})`;
+      }
+    }
+    
+    // 🎭 Initialize
+    window.addEventListener('load', () => {
+      // Start with gentle petal fall
+      setInterval(() => {
+        if (!noteRevealed) {
+          createBouquetPetal();
+        }
+      }, 800);
+      
+      // Fade in
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+      
+      // Initial story reveal check
+      revealStory();
+    });
+    
+    window.addEventListener('scroll', revealStory);
+    
+    // 🎵 Gentle background music (optional)
+    let audioContext;
+    let isAudioPlaying = false;
+    
+    function playCelebrationMusic() {
+      if (!audioContext && noteRevealed && !isAudioPlaying) {
+        try {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          
+          // Create gentle arpeggio
+          const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+          let currentNote = 0;
+          
+          function playNextNote() {
+            if (!isAudioPlaying) return;
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(notes[currentNote], audioContext.currentTime);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.1);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 1);
+            
+            currentNote = (currentNote + 1) % notes.length;
+            
+            setTimeout(playNextNote, 500);
+          }
+          
+          isAudioPlaying = true;
+          playNextNote();
+        } catch (e) {
+          console.log('Audio not available, continuing silently');
+        }
+      }
+    }
+    
+    // Start music when note is revealed
+    crystalVase.addEventListener('click', () => {
+      setTimeout(playCelebrationMusic, 1000);
+    });
+    
+    // 🕊️ Final touch: bird fly-by
+    setTimeout(() => {
+      if (!noteRevealed) {
+        const bird = document.createElement('div');
+        bird.style.position = 'fixed';
+        bird.style.top = `${20 + Math.random() * 30}%`;
+        bird.style.left = '-50px';
+        bird.style.width = '40px';
+        bird.style.height = '20px';
+        bird.style.background = 'var(--eternity-blue)';
+        bird.style.borderRadius = '50%';
+        bird.style.zIndex = '5';
+        bird.style.opacity = '0.6';
+        bird.style.filter = 'blur(0.5px)';
+        bird.style.pointerEvents = 'none';
+        
+        document.body.appendChild(bird);
+        
+        bird.animate([
+          { transform: 'translateX(0) translateY(0)' },
+          { transform: `translateX(${window.innerWidth + 100}px) translateY(${Math.random() * 50 - 25}px)` }
+        ], {
+          duration: 8000,
+          easing: 'linear'
+        }).onfinish = () => bird.remove();
+      }
+    }, 5000);
+  </script>
+</body>
+</html>

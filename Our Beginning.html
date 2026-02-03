@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story Begins</title>
+  
+  <!-- Fonts with soul -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@100;200;300;400&family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🌊 The Deep Sea of Your Love */
+    :root {
+      --deep-sea: #1B3B2D;
+      --sea-mid: #2A4D3A;
+      --sea-light: #3A6B4F;
+      --moonlight: #F7F3E3;
+      --starlight: #FFFDF6;
+      --jelly-soul: #B7D7C8;
+      --jelly-heart: #D8C1E3;
+      --petal-whisper: #F8D7D7;
+      --ocean-sigh: #A3D2FF;
+      --memory-glow: rgba(247, 243, 227, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 400vh;
+      background: 
+        radial-gradient(ellipse at top, #0A1F17 0%, transparent 70%),
+        radial-gradient(ellipse at bottom, #2A5C48 0%, transparent 70%),
+        linear-gradient(180deg, #0A1F17 0%, var(--deep-sea) 20%, var(--sea-mid) 40%, var(--sea-light) 70%, #1B3B2D 100%);
+      color: var(--moonlight);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Global Navigation */
+    .global-nav {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-home {
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .nav-home:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .nav-dots {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot:hover {
+      transform: scale(1.5);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-dot.active {
+      background: rgba(255, 255, 255, 0.9);
+      transform: scale(1.5);
+    }
+
+    /* Page Navigation */
+    .page-navigation {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 2rem;
+      background: rgba(247, 243, 227, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 30px;
+      color: #F7F3E3;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .nav-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ✨ The Stardust Trail */
+    .stardust {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: var(--starlight);
+      border-radius: 50%;
+      animation: starTwinkle 8s infinite;
+    }
+
+    /* 🍃 The Memory Petals */
+    .memory-petal {
+      position: fixed;
+      width: 14px;
+      height: 14px;
+      background: linear-gradient(135deg, var(--petal-whisper), var(--jelly-heart));
+      border-radius: 50% 0 50% 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(0.8px);
+      transform-origin: center;
+    }
+
+    /* 📜 The Opening Scroll */
+    .opening-scroll {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .title-veil {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+      color: transparent;
+      background: linear-gradient(120deg, var(--moonlight) 30%, var(--ocean-sigh) 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 
+        0 0 30px rgba(163, 210, 255, 0.3),
+        0 0 60px rgba(216, 193, 227, 0.2);
+      animation: titleBreath 12s ease-in-out infinite;
+    }
+
+    .subtitle-whisper {
+      font-family: 'Cormorant Garamond', italic;
+      font-size: 1.4rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      color: var(--jelly-soul);
+      opacity: 0.9;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: subtitleFloat 15s ease-in-out infinite;
+    }
+
+    /* 🖱️ The Invitation */
+    .invitation {
+      position: absolute;
+      bottom: 8rem; /* Adjusted for navigation */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      animation: gentleCall 4s ease-in-out infinite;
+    }
+
+    .invitation-text {
+      font-size: 1rem;
+      color: var(--ocean-sigh);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cradle {
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--ocean-sigh), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-pearl {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: var(--starlight);
+      border-radius: 1px;
+      animation: pearlFall 2.5s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--ocean-sigh);
+    }
+
+    /* 🌌 The Ocean Depths (Content) */
+    .ocean-depths {
+      position: relative;
+      z-index: 5;
+      max-width: 680px;
+      margin: 100vh auto 0;
+      padding: 5rem 2rem;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: rgba(247, 243, 227, 0.92);
+    }
+
+    .depth-line {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .depth-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .depth-line:nth-child(2) { transition-delay: 0.1s; }
+    .depth-line:nth-child(3) { transition-delay: 0.2s; }
+    .depth-line:nth-child(4) { transition-delay: 0.3s; }
+
+    /* 💫 The Jellyfish - Souls Finding Each Other */
+    .soul-sea {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .soul-jelly {
+      position: absolute;
+      width: 180px;
+      height: 220px;
+      filter: 
+        drop-shadow(0 0 25px rgba(183, 215, 200, 0.2))
+        drop-shadow(0 0 40px rgba(163, 210, 255, 0.15));
+      transition: all 0.6s ease;
+      pointer-events: auto;
+      cursor: pointer;
+      transform-origin: center 80%;
+    }
+
+    .soul-jelly:hover {
+      filter: 
+        drop-shadow(0 0 35px rgba(216, 193, 227, 0.4))
+        drop-shadow(0 0 60px rgba(248, 215, 215, 0.3));
+      transform: scale(1.05);
+    }
+
+    .soul-jelly svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .jelly-heartbeat {
+      animation: heartbeat 4s ease-in-out infinite;
+    }
+
+    .tentacle-song {
+      animation: tentacleSong 3.5s ease-in-out infinite;
+    }
+
+    .tentacle-song:nth-child(2) { animation-delay: 0.3s; }
+    .tentacle-song:nth-child(3) { animation-delay: 0.6s; }
+
+    /* 💞 The Meeting - When Souls Touch */
+    .soul-meeting {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7) rotate(-5deg);
+      opacity: 0;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 500;
+      text-align: center;
+      color: transparent;
+      background: linear-gradient(45deg, var(--starlight), var(--jelly-heart), var(--ocean-sigh));
+      -webkit-background-clip: text;
+      background-clip: text;
+      pointer-events: none;
+      z-index: 4;
+      transition: all 1.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      text-shadow: 0 0 40px rgba(163, 210, 255, 0.4);
+    }
+
+    .soul-meeting.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    .soul-meeting::after {
+      content: '✨';
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: gentleTwirl 3s linear infinite;
+    }
+
+    /* 🌟 The Magic Moments */
+    .magic-spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, var(--starlight) 30%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 6;
+      opacity: 0;
+      mix-blend-mode: screen;
+    }
+
+    .love-ripple {
+      position: absolute;
+      border: 1px solid var(--ocean-sigh);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* 📜 The Final Whisper */
+    .final-whisper {
+      position: fixed;
+      bottom: 6rem; /* Adjusted for navigation */
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--jelly-soul);
+      opacity: 0.6;
+      text-align: center;
+      z-index: 5;
+      animation: finalBreath 6s ease-in-out infinite;
+    }
+
+    /* 🎭 Animations with Soul */
+    @keyframes titleBreath {
+      0%, 100% { 
+        opacity: 1;
+        letter-spacing: 0.03em;
+      }
+      50% { 
+        opacity: 0.9;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    @keyframes subtitleFloat {
+      0%, 100% { transform: translateY(0) rotate(0.2deg); }
+      33% { transform: translateY(-3px) rotate(-0.1deg); }
+      66% { transform: translateY(2px) rotate(0.3deg); }
+    }
+
+    @keyframes gentleCall {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(-10px); opacity: 1; }
+    }
+
+    @keyframes pearlFall {
+      0% { top: 0; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.03); }
+      50% { transform: scale(0.98); }
+      75% { transform: scale(1.01); }
+    }
+
+    @keyframes tentacleSong {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(4px) rotate(1deg); }
+      50% { transform: translateY(-2px) rotate(-1deg); }
+      75% { transform: translateY(2px) rotate(0.5deg); }
+    }
+
+    @keyframes gentleTwirl {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes finalBreath {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    /* 📱 For Her Hands (Mobile) */
+    @media (max-width: 768px) {
+      .soul-jelly {
+        width: 130px;
+        height: 160px;
+      }
+      
+      .ocean-depths {
+        padding: 3rem 1.5rem;
+      }
+      
+      .depth-line {
+        margin-bottom: 2.5rem;
+      }
+      
+      .global-nav {
+        top: 1rem;
+        padding: 0.6rem 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-btn {
+        padding: 0.6rem 1.5rem;
+        min-width: 100px;
+      }
+    }
+
+    /* 💻 For Her Eyes (Desktop) */
+    @media (min-width: 1200px) {
+      .ocean-depths {
+        max-width: 800px;
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation -->
+  <div class="global-nav">
+    <div class="nav-home" onclick="goToPage('index.html')">🏠</div>
+    <div class="nav-dots">
+      <div class="nav-dot active" onclick="goToPage('Our Beginning.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Harmony.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Minds.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Forever.html')"></div>
+    </div>
+  </div>
+
+  <!-- 🌌 The Stardust of Your Memories -->
+  <div class="stardust" id="stardust"></div>
+
+  <!-- 🍃 The Petals of Your Thoughts -->
+  <div id="memoryPetals"></div>
+
+  <!-- 📜 The Beginning -->
+  <section class="opening-scroll">
+    <h1 class="title-veil">For You, My Princess</h1>
+    <p class="subtitle-whisper">A journey through our little world, where every moment is a pearl in the deep sea of us</p>
+    
+    <div class="invitation">
+      <div class="scroll-cradle">
+        <div class="scroll-pearl"></div>
+      </div>
+      <div class="invitation-text">Begin Our Story</div>
+    </div>
+  </section>
+
+  <!-- 🌊 The Depths of Your Story -->
+  <div class="ocean-depths" id="oceanDepths">
+    <p class="depth-line">In the quiet depths before us, there was a sea, vast, deep, and holding its breath.</p>
+    <p class="depth-line">Two souls, like gentle jellyfish, drifted in separate currents. Unaware that the ocean itself was conspiring to bring them closer.</p>
+    <p class="depth-line">There were no maps for this journey. Only the quiet pull of something deeper than distance, softer than time.</p>
+    <p class="depth-line">And then… the currents changed. Not with a storm, but with a whisper. The kind of shift that happens not in the water, but in the heart of it.</p>
+  </div>
+
+  <!-- 💫 The Souls Finding Each Other -->
+  <div class="soul-sea">
+    <!-- Your Soul -->
+    <div class="soul-jelly" id="soulJellyLeft">
+      <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="soulGradientLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--jelly-soul)" stop-opacity="0.8" />
+            <stop offset="50%" stop-color="var(--ocean-sigh)" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="var(--starlight)" stop-opacity="0.3" />
+          </linearGradient>
+          <filter id="soulGlow">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        
+        <!-- The Heart of the Jelly -->
+        <ellipse cx="100" cy="120" rx="65" ry="50" fill="url(#soulGradientLeft)" filter="url(#soulGlow)" class="jelly-heartbeat" />
+        
+        <!-- The Tentacles - Like Thoughts Reaching Out -->
+        <path d="M70 165Q55 210 50 260" stroke="url(#soulGradientLeft)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        <path d="M100 165Q95 210 100 260" stroke="url(#soulGradientLeft)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        <path d="M130 165Q145 210 150 260" stroke="url(#soulGradientLeft)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        
+        <!-- Inner Glow -->
+        <ellipse cx="100" cy="115" rx="30" ry="25" fill="var(--starlight)" opacity="0.2" filter="blur(6px)" />
+      </svg>
+    </div>
+
+    <!-- Her Soul -->
+    <div class="soul-jelly" id="soulJellyRight">
+      <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="soulGradientRight" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="var(--jelly-heart)" stop-opacity="0.8" />
+            <stop offset="50%" stop-color="var(--petal-whisper)" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="var(--starlight)" stop-opacity="0.3" />
+          </linearGradient>
+        </defs>
+        
+        <ellipse cx="100" cy="120" rx="65" ry="50" fill="url(#soulGradientRight)" filter="url(#soulGlow)" class="jelly-heartbeat" />
+        
+        <path d="M70 165Q55 210 50 260" stroke="url(#soulGradientRight)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        <path d="M100 165Q95 210 100 260" stroke="url(#soulGradientRight)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        <path d="M130 165Q145 210 150 260" stroke="url(#soulGradientRight)" stroke-width="3.5" stroke-linecap="round" class="tentacle-song" />
+        
+        <ellipse cx="100" cy="115" rx="30" ry="25" fill="var(--petal-whisper)" opacity="0.2" filter="blur(6px)" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- 💞 The Moment -->
+  <div class="soul-meeting" id="soulMeeting">
+    The moment our currents became one…
+  </div>
+
+  <!-- 📜 The Final Whisper -->
+  <div class="final-whisper" id="finalWhisper">
+    Our story continues on the next page…
+  </div>
+
+  <!-- Container for Magic -->
+  <div id="magicContainer"></div>
+
+  <!-- Page Navigation -->
+  <div class="page-navigation">
+    <button class="nav-btn prev-btn" onclick="goToPage('index.html')">
+      ← Home
+    </button>
+    <button class="nav-btn next-btn" onclick="goToPage('Our Harmony.html')">
+      Next: Our Harmony →
+    </button>
+  </div>
+
+  <script>
+    // 🌌 Create the stardust of your universe
+    const stardust = document.getElementById('stardust');
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `${Math.random() * 100}vh`;
+      star.style.animationDelay = `${Math.random() * 8}s`;
+      star.style.opacity = 0.2 + Math.random() * 0.5;
+      stardust.appendChild(star);
+    }
+
+    // 🍃 Create memory petals
+    const petalContainer = document.getElementById('memoryPetals');
+    const petalCount = 12;
+    const petals = [];
+
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'memory-petal';
+      
+      // Each petal has its own personality
+      petal.style.left = `${10 + Math.random() * 80}vw`;
+      petal.style.top = `${-20 - Math.random() * 30}vh`;
+      petal.style.opacity = 0.3 + Math.random() * 0.4;
+      petal.style.scale = 0.7 + Math.random() * 0.6;
+      petal.style.rotate = `${Math.random() * 360}deg`;
+      
+      // Create unique floating path
+      const duration = 18 + Math.random() * 12;
+      const delay = Math.random() * 5;
+      
+      petal.animate([
+        { transform: `translate(0, 0) rotate(0deg)` },
+        { transform: `translate(${Math.random() * 60 - 30}px, 120vh) rotate(${180 + Math.random() * 180}deg)` }
+      ], {
+        duration: duration * 1000,
+        delay: delay * 1000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        iterations: Infinity
+      });
+      
+      petalContainer.appendChild(petal);
+      petals.push(petal);
+    }
+
+    // 💫 The Souls' Journey
+    const soulLeft = document.getElementById('soulJellyLeft');
+    const soulRight = document.getElementById('soulJellyRight');
+    const soulMeeting = document.getElementById('soulMeeting');
+    const oceanLines = document.querySelectorAll('.depth-line');
+    const finalWhisper = document.getElementById('finalWhisper');
+    const magicContainer = document.getElementById('magicContainer');
+
+    const journeyStart = window.innerHeight * 0.7;
+    const journeyDistance = 600;
+    let soulsHaveMet = false;
+    let lastHeartbeat = 0;
+
+    // Create a gentle heartbeat effect
+    function createHeartbeat(x, y) {
+      const now = Date.now();
+      if (now - lastHeartbeat < 300) return;
+      lastHeartbeat = now;
+
+      for (let i = 0; i < 3; i++) {
+        const ripple = document.createElement('div');
+        ripple.className = 'love-ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        ripple.style.width = '0px';
+        ripple.style.height = '0px';
+        
+        magicContainer.appendChild(ripple);
+        
+        ripple.animate([
+          { width: '0px', height: '0px', opacity: 0.8, borderWidth: '2px' },
+          { width: '200px', height: '200px', opacity: 0, borderWidth: '0px' }
+        ], {
+          duration: 1600,
+          easing: 'cubic-bezier(0.2, 0, 0.8, 1)',
+          delay: i * 200
+        }).onfinish = () => ripple.remove();
+      }
+    }
+
+    // Create a constellation of sparks
+    function createConstellation(x, y, count = 20) {
+      const colors = [varColors.oceanSigh, varColors.starlight, varColors.jellyHeart];
+      
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const spark = document.createElement('div');
+          spark.className = 'magic-spark';
+          
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 20 + Math.random() * 80;
+          const travelX = Math.cos(angle) * distance * (0.5 + Math.random());
+          const travelY = Math.sin(angle) * distance * (0.5 + Math.random());
+          
+          spark.style.left = `${x}px`;
+          spark.style.top = `${y}px`;
+          spark.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 40%, transparent 70%)`;
+          
+          magicContainer.appendChild(spark);
+          
+          // Spark journey
+          spark.animate([
+            { transform: 'translate(0, 0) scale(0)', opacity: 0 },
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: `translate(${travelX}px, ${travelY}px) scale(0)`, opacity: 0 }
+          ], {
+            duration: 1200 + Math.random() * 800,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+          }).onfinish = () => spark.remove();
+        }, i * 40);
+      }
+    }
+
+    // CSS variable colors for JS
+    const varColors = {
+      oceanSigh: getComputedStyle(document.documentElement).getPropertyValue('--ocean-sigh').trim(),
+      starlight: getComputedStyle(document.documentElement).getPropertyValue('--starlight').trim(),
+      jellyHeart: getComputedStyle(document.documentElement).getPropertyValue('--jelly-heart').trim()
+    };
+
+    // Organic, breathing movement
+    function organicBreath(progress, seed = 0) {
+      const time = Date.now() * 0.001;
+      return (
+        Math.sin(progress * Math.PI * 1.5 + time * 0.3 + seed) * 25 +
+        Math.sin(progress * Math.PI * 0.7 + time * 0.5 + seed * 2) * 15 +
+        Math.sin(progress * Math.PI * 0.3 + time * 0.2 + seed * 3) * 8
+      );
+    }
+
+    // The main journey
+    function onSoulsJourney() {
+      const scrollY = window.scrollY;
+      const progress = Math.max(0, Math.min(1, (scrollY - journeyStart) / journeyDistance));
+      
+      // Calculate positions with organic breathing
+      const centerX = window.innerWidth / 2;
+      const separation = 400;
+      
+      const leftX = centerX - separation + progress * separation;
+      const rightX = centerX + separation - progress * separation;
+      
+      const verticalCenter = window.innerHeight * 0.4;
+      const breathOffset = organicBreath(progress, 0);
+      const breathOffset2 = organicBreath(progress, Math.PI);
+      
+      const leftY = verticalCenter + breathOffset;
+      const rightY = verticalCenter + breathOffset2;
+      
+      // Apply transformations with soul
+      soulLeft.style.transform = `
+        translate(${leftX}px, ${leftY}px)
+        scale(${0.85 + progress * 0.2})
+        rotate(${Math.sin(progress * Math.PI) * 5}deg)
+      `;
+      
+      soulRight.style.transform = `
+        translate(${rightX}px, ${rightY}px)
+        scale(${0.85 + progress * 0.2})
+        rotate(${-Math.sin(progress * Math.PI) * 5}deg)
+      `;
+      
+      // Souls meeting moment
+      if (progress > 0.96 && !soulsHaveMet) {
+        soulsHaveMet = true;
+        soulMeeting.classList.add('show');
+        
+        // Create magical meeting effect
+        createConstellation(centerX, verticalCenter, 30);
+        createHeartbeat(centerX, verticalCenter);
+        
+        // Gentle sound of meeting (optional chime)
+        try {
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+          oscillator.frequency.exponentialRampToValueAtTime(659.25, audioContext.currentTime + 0.5); // E5
+          
+          gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+          
+          oscillator.start();
+          oscillator.stop(audioContext.currentTime + 1);
+        } catch (e) {
+          // Sound not essential, continue silently
+        }
+      } else if (progress <= 0.96 && soulsHaveMet) {
+        soulsHaveMet = false;
+        soulMeeting.classList.remove('show');
+      }
+      
+      // Reveal ocean lines with parallax
+      oceanLines.forEach((line, index) => {
+        const lineProgress = (scrollY - journeyStart - 100 + index * 180) / 250;
+        if (lineProgress > 0 && lineProgress < 1.2) {
+          line.classList.add('visible');
+        }
+      });
+      
+      // Final whisper appears near the end
+      const whisperProgress = (scrollY - journeyStart - journeyDistance * 0.7) / 200;
+      finalWhisper.style.opacity = Math.max(0, Math.min(1, whisperProgress));
+    }
+
+    // Click interaction - when she touches the souls
+    [soulLeft, soulRight].forEach(soul => {
+      soul.addEventListener('click', (e) => {
+        createConstellation(e.clientX, e.clientY, 12);
+        createHeartbeat(e.clientX, e.clientY);
+      });
+    });
+
+    // Hover interaction - gentle acknowledgment
+    [soulLeft, soulRight].forEach(soul => {
+      soul.addEventListener('mouseenter', () => {
+        soul.style.filter = `
+          drop-shadow(0 0 40px rgba(216, 193, 227, 0.6))
+          drop-shadow(0 0 80px rgba(248, 215, 215, 0.4))
+        `;
+      });
+      
+      soul.addEventListener('mouseleave', () => {
+        soul.style.filter = `
+          drop-shadow(0 0 25px rgba(183, 215, 200, 0.2))
+          drop-shadow(0 0 40px rgba(163, 210, 255, 0.15))
+        `;
+      });
+    });
+
+    // Initialize and listen
+    onSoulsJourney();
+    window.addEventListener('scroll', onSoulsJourney, { passive: true });
+    
+    // Animate petals continuously
+    setInterval(() => {
+      petals.forEach(petal => {
+        const currentY = parseFloat(petal.style.top || '-30vh');
+        if (currentY > 120) {
+          petal.style.top = `${-30 - Math.random() * 20}vh`;
+          petal.style.left = `${10 + Math.random() * 80}vw`;
+        }
+      });
+    }, 1000);
+
+    // Pre-warm the animation
+    requestAnimationFrame(() => {
+      onSoulsJourney();
+      document.body.style.opacity = '1';
+    });
+
+    // Navigation Functions
+    function goToPage(page) {
+      // Add page transition effect
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        window.location.href = page;
+      }, 500);
+    }
+
+    // Update active dot based on current page
+    const currentPage = window.location.pathname.split('/').pop();
+    const dots = document.querySelectorAll('.nav-dot');
+    const pageMap = {
+      'Our Beginning.html': 0,
+      'Our Harmony.html': 1,
+      'Our Minds.html': 2,
+      'Our Forever.html': 3
+    };
+
+    if (pageMap[currentPage] !== undefined) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[pageMap[currentPage]].classList.add('active');
+    }
+
+    // Hide previous button on first page (only show home)
+    document.querySelector('.prev-btn').textContent = '← Home';
+  </script>
+</body>
+</html>

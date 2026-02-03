@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Harmony</title>
+  
+  <!-- Fonts with musical soul -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@100;200;300&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🎹 The Concert Hall of Your Love */
+    :root {
+      --concert-dark: #1B1E2C;
+      --velvet-curtain: #2A1B3D;
+      --stage-light: #F7F3E3;
+      --candle-glow: #FFE8B8;
+      --ivory-key: #FFFDF0;
+      --ebony-key: #1A1523;
+      --rachmaninoff-blue: #3A5F8C;
+      --passion-red: #C44569;
+      --gold-leaf: #D4AF37;
+      --soul-spark: #A3D2FF;
+      --tear-clear: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 200vh;
+      background: 
+        radial-gradient(ellipse at top, var(--concert-dark) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 20%, var(--velvet-curtain) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 80%, #1A1523 0%, transparent 50%),
+        linear-gradient(180deg, #0A0B12 0%, var(--concert-dark) 30%, #2A1B3D 70%, #1A1523 100%);
+      color: var(--stage-light);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Global Navigation */
+    .global-nav {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-home {
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .nav-home:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .nav-dots {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot:hover {
+      transform: scale(1.5);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-dot.active {
+      background: rgba(255, 255, 255, 0.9);
+      transform: scale(1.5);
+    }
+
+    /* Page Navigation */
+    .page-navigation {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 2rem;
+      background: rgba(247, 243, 227, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 30px;
+      color: #F7F3E3;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .nav-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 🎻 The Ghost Orchestra */
+    .ghost-instruments {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.1;
+    }
+
+    .music-ghost {
+      position: absolute;
+      opacity: 0;
+      animation: ghostAppear 20s infinite;
+    }
+
+    /* 🕯️ The Candlelit Atmosphere */
+    .candlelight {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .candle {
+      position: absolute;
+      width: 3px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-leaf), transparent);
+      filter: blur(1px);
+    }
+
+    .candle-flame {
+      position: absolute;
+      width: 15px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, var(--candle-glow) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(3px);
+      animation: flameDance 3s ease-in-out infinite;
+    }
+
+    /* 📜 The Concert Program */
+    .concert-program {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .composer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--gold-leaf);
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+
+    .piece-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: transparent;
+      background: linear-gradient(120deg, var(--stage-light) 20%, var(--rachmaninoff-blue) 40%, var(--passion-red) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 
+        0 0 40px rgba(58, 95, 140, 0.4),
+        0 0 80px rgba(196, 69, 105, 0.2);
+      margin-bottom: 1.5rem;
+      animation: titleResonate 15s ease-in-out infinite;
+    }
+
+    .dedication {
+      font-family: 'Cormorant Garamond', italic;
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--stage-light);
+      opacity: 0.9;
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 4rem;
+      padding: 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.3);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* 🎼 The Manuscript Scroll */
+    .manuscript-scroll {
+      position: absolute;
+      bottom: 8rem; /* Adjusted for navigation */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      animation: gentleUrgency 6s ease-in-out infinite;
+    }
+
+    .scroll-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--soul-spark);
+      letter-spacing: 0.1em;
+    }
+
+    .music-line {
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-leaf), transparent);
+      position: relative;
+      overflow: visible;
+    }
+
+    .music-note {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--stage-light);
+      border-radius: 50%;
+      top: -5px;
+      left: 0;
+      animation: noteTravel 3s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--soul-spark);
+    }
+
+    /* 🎹 The Grand Piano - Our Instrument */
+    .concert-stage {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1000px;
+      height: 60vh;
+      pointer-events: none;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .piano-body {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(to bottom, #0A0B12, #1A1523, #0A0B12);
+      border-radius: 10px 10px 0 0;
+      position: relative;
+      box-shadow: 
+        0 -20px 60px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(212, 175, 55, 0.2);
+    }
+
+    .piano-lid {
+      width: 95%;
+      height: 20px;
+      background: linear-gradient(to bottom, #2A1B3D, #1A1523);
+      border-radius: 5px 5px 0 0;
+      position: absolute;
+      top: -20px;
+      left: 2.5%;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .keyboard {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-top: -150px;
+      pointer-events: auto;
+    }
+
+    .piano-key {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+
+    .white-key {
+      width: 40px;
+      height: 180px;
+      background: linear-gradient(to bottom, var(--ivory-key) 90%, #E8E4D8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      margin: 0 1px;
+    }
+
+    .black-key {
+      width: 24px;
+      height: 120px;
+      background: linear-gradient(to bottom, var(--ebony-key), #0A0B12);
+      border-radius: 0 0 3px 3px;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 🎵 The Music Visualization */
+    .music-visualization {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .sound-wave {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--soul-spark), transparent);
+      opacity: 0;
+      filter: blur(1px);
+    }
+
+    .musical-note {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0;
+      animation: noteFloat 3s ease-out forwards;
+    }
+
+    /* 🎭 The Conductor's Stand */
+    .conductor-stand {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      z-index: 5;
+      pointer-events: auto;
+    }
+
+    .play-button {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(26, 21, 35, 0.8);
+      border: 2px solid var(--gold-leaf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .play-button:hover {
+      background: rgba(58, 95, 140, 0.4);
+      transform: scale(1.05);
+      box-shadow: 
+        0 0 40px rgba(212, 175, 55, 0.4),
+        0 0 80px rgba(163, 210, 255, 0.2);
+    }
+
+    .play-button.playing {
+      animation: conductorPulse 2s ease-in-out infinite;
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 20px solid var(--gold-leaf);
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .play-button.playing .play-icon {
+      border-left: 8px solid var(--gold-leaf);
+      border-right: 8px solid var(--gold-leaf);
+      border-top: none;
+      border-bottom: none;
+      width: 20px;
+      height: 20px;
+      margin-left: 0;
+    }
+
+    .conductor-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--stage-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* 📖 The Musical Story */
+    .musical-story {
+      position: relative;
+      z-index: 6;
+      max-width: 800px;
+      margin: 100vh auto 0;
+      padding: 6rem 2rem;
+      font-size: 1.2rem;
+      line-height: 2;
+      color: rgba(247, 243, 227, 0.95);
+    }
+
+    .story-paragraph {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .story-paragraph.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight {
+      color: var(--soul-spark);
+      text-shadow: 0 0 10px rgba(163, 210, 255, 0.3);
+      font-style: italic;
+    }
+
+    /* 🎼 Animations with Musicality */
+    @keyframes titleResonate {
+      0%, 100% { 
+        letter-spacing: 0.02em;
+        filter: brightness(1);
+      }
+      50% { 
+        letter-spacing: 0.03em;
+        filter: brightness(1.1);
+      }
+    }
+
+    @keyframes gentleUrgency {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes noteTravel {
+      0% { left: 0; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    @keyframes flameDance {
+      0%, 100% { 
+        transform: scale(1) translateY(0);
+        opacity: 0.8;
+      }
+      25% { 
+        transform: scale(1.1, 0.9) translateY(-2px);
+        opacity: 1;
+      }
+      50% { 
+        transform: scale(0.9, 1.1) translateY(2px);
+        opacity: 0.7;
+      }
+      75% { 
+        transform: scale(1.05, 0.95) translateY(-1px);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes ghostAppear {
+      0%, 100% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 0.1; transform: translateY(0); }
+    }
+
+    @keyframes conductorPulse {
+      0%, 100% { 
+        box-shadow: 
+          0 0 20px rgba(212, 175, 55, 0.4),
+          0 0 40px rgba(163, 210, 255, 0.2);
+      }
+      50% { 
+        box-shadow: 
+          0 0 40px rgba(212, 175, 55, 0.6),
+          0 0 80px rgba(163, 210, 255, 0.4);
+      }
+    }
+
+    @keyframes noteFloat {
+      0% { 
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+      100% { 
+        opacity: 0;
+        transform: translateY(-100px) rotate(20deg);
+      }
+    }
+
+    @keyframes keyPress {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+
+    /* 🎹 Keyboard Layout */
+    .keyboard {
+      display: flex;
+      position: relative;
+    }
+
+    /* Black key positions */
+    .black-key:nth-child(1) { left: 30px; } /* C# */
+    .black-key:nth-child(2) { left: 71px; } /* D# */
+    .black-key:nth-child(3) { left: 152px; } /* F# */
+    .black-key:nth-child(4) { left: 193px; } /* G# */
+    .black-key:nth-child(5) { left: 234px; } /* A# */
+    .black-key:nth-child(6) { left: 315px; } /* C# */
+    .black-key:nth-child(7) { left: 356px; } /* D# */
+
+    /* 🕯️ Mobile Adaptation */
+    @media (max-width: 768px) {
+      .white-key { width: 30px; height: 150px; }
+      .black-key { width: 18px; height: 100px; }
+      .black-key:nth-child(1) { left: 22px; }
+      .black-key:nth-child(2) { left: 53px; }
+      .black-key:nth-child(3) { left: 114px; }
+      .black-key:nth-child(4) { left: 145px; }
+      .black-key:nth-child(5) { left: 176px; }
+      .black-key:nth-child(6) { left: 237px; }
+      .black-key:nth-child(7) { left: 268px; }
+      
+      .piece-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+      }
+      
+      .musical-story {
+        padding: 4rem 1.5rem;
+      }
+      
+      .global-nav {
+        top: 1rem;
+        padding: 0.6rem 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-btn {
+        padding: 0.6rem 1.5rem;
+        min-width: 100px;
+      }
+      
+      .manuscript-scroll {
+        bottom: 10rem; /* More space for mobile */
+      }
+    }
+
+    /* 🎭 Desktop Grandeur */
+    @media (min-width: 1200px) {
+      .concert-stage {
+        max-width: 1200px;
+      }
+      
+      .musical-story {
+        max-width: 900px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation -->
+  <div class="global-nav">
+    <div class="nav-home" onclick="goToPage('index.html')">🏠</div>
+    <div class="nav-dots">
+      <div class="nav-dot" onclick="goToPage('Our Beginning.html')"></div>
+      <div class="nav-dot active" onclick="goToPage('Our Harmony.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Minds.html')"></div>
+      <div class="nav-dot" onclick="goToPage('Our Forever.html')"></div>
+    </div>
+  </div>
+
+  <!-- 🎻 Ghost Orchestra -->
+  <div class="ghost-instruments">
+    <div class="music-ghost" style="top: 20%; left: 10%;">🎻</div>
+    <div class="music-ghost" style="top: 30%; left: 85%;">🎺</div>
+    <div class="music-ghost" style="top: 70%; left: 15%;">🎷</div>
+    <div class="music-ghost" style="top: 80%; left: 90%;">🪈</div>
+  </div>
+
+  <!-- 🕯️ Candlelit Atmosphere -->
+  <div class="candlelight" id="candlelight"></div>
+
+  <!-- 📜 Concert Program -->
+  <section class="concert-program">
+    <div class="composer-name">Sergei Rachmaninoff</div>
+    <h1 class="piece-title">Piano Concerto No. 2</h1>
+    <p class="dedication">For every moment between us that felt like music before we had the notes.<br>For every heartbeat that found its rhythm in your presence.</p>
+    
+    <div class="manuscript-scroll">
+      <div class="scroll-text">Let the music begin</div>
+      <div class="music-line">
+        <div class="music-note"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎹 The Grand Piano -->
+  <div class="concert-stage">
+    <div class="piano-lid"></div>
+    <div class="piano-body"></div>
+    
+    <div class="keyboard" id="keyboard">
+      <!-- White Keys -->
+      <div class="piano-key white-key" data-note="C"></div>
+      <div class="piano-key white-key" data-note="D"></div>
+      <div class="piano-key white-key" data-note="E"></div>
+      <div class="piano-key white-key" data-note="F"></div>
+      <div class="piano-key white-key" data-note="G"></div>
+      <div class="piano-key white-key" data-note="A"></div>
+      <div class="piano-key white-key" data-note="B"></div>
+      <div class="piano-key white-key" data-note="C2"></div>
+      
+      <!-- Black Keys -->
+      <div class="piano-key black-key" data-note="C#"></div>
+      <div class="piano-key black-key" data-note="D#"></div>
+      <div class="piano-key black-key" data-note="F#"></div>
+      <div class="piano-key black-key" data-note="G#"></div>
+      <div class="piano-key black-key" data-note="A#"></div>
+      <div class="piano-key black-key" data-note="C#2"></div>
+      <div class="piano-key black-key" data-note="D#2"></div>
+    </div>
+  </div>
+
+  <!-- 🎵 Music Visualization -->
+  <div class="music-visualization" id="musicViz"></div>
+
+  <!-- 🎭 Conductor's Stand -->
+  <div class="conductor-stand">
+    <div class="play-button" id="playButton">
+      <div class="play-icon"></div>
+    </div>
+    <div class="conductor-text" id="conductorText">Listen to Our Harmony</div>
+  </div>
+
+  <!-- 📖 The Musical Story -->
+  <div class="musical-story" id="musicalStory">
+    <p class="story-paragraph">
+      There are pieces of music that don't just play notes, they <span class="highlight">unfold universes</span>. Rachmaninoff's Second Concerto is one such universe. Born from depression and despair, it emerges as something <span class="highlight">triumphant and beautiful</span>, much like love itself.
+    </p>
+    
+    <p class="story-paragraph">
+      The opening chords are like <span class="highlight">distant heartbeats</span> finding each other in the dark. Each note a question, each phrase a hesitant reaching out. This is how we began... uncertain, but pulled by something deeper than understanding.
+    </p>
+    
+    <p class="story-paragraph">
+      Then comes the melody that famous, aching theme that feels like <span class="highlight">memory and longing woven together</span>. It's the musical equivalent of looking at you across a room and knowing, without words, that everything has changed.
+    </p>
+    
+    <p class="story-paragraph">
+      The orchestra swells, the piano responds, and what was solitary becomes a <span class="highlight">conversation between souls</span>. This is our harmony. not perfect unison, but beautiful counterpoint. Different melodies that choose to move together.
+    </p>
+  </div>
+
+  <!-- Page Navigation -->
+  <div class="page-navigation">
+    <button class="nav-btn prev-btn" onclick="goToPage('Our Beginning.html')">
+      ← Previous: Our Beginning
+    </button>
+    <button class="nav-btn next-btn" onclick="goToPage('Our Minds.html')">
+      Next: Our Minds →
+    </button>
+  </div>
+
+  <script>
+    // 🕯️ Create candlelit atmosphere
+    const candleContainer = document.getElementById('candlelight');
+    const candleCount = 8;
+    
+    for (let i = 0; i < candleCount; i++) {
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+      candle.style.left = `${10 + (i * 12)}%`;
+      candle.style.bottom = '20%';
+      candle.style.opacity = 0.3 + Math.random() * 0.4;
+      
+      const flame = document.createElement('div');
+      flame.className = 'candle-flame';
+      flame.style.left = '-6px';
+      flame.style.bottom = '40px';
+      flame.style.animationDelay = `${Math.random() * 3}s`;
+      
+      candle.appendChild(flame);
+      candleContainer.appendChild(candle);
+    }
+
+    // 🎹 Piano Configuration
+    const notes = {
+      'C': 261.63,  // C4
+      'C#': 277.18,
+      'D': 293.66,
+      'D#': 311.13,
+      'E': 329.63,
+      'F': 349.23,
+      'F#': 369.99,
+      'G': 392.00,
+      'G#': 415.30,
+      'A': 440.00,
+      'A#': 466.16,
+      'B': 493.88,
+      'C2': 523.25   // C5
+    };
+
+    // 🎼 Rachmaninoff's Theme (simplified melody)
+    const rachmaninoffTheme = [
+      { note: 'C', duration: 800, intensity: 0.6 },
+      { note: 'E', duration: 400, intensity: 0.7 },
+      { note: 'G', duration: 600, intensity: 0.8 },
+      { note: 'C2', duration: 1000, intensity: 0.9 },
+      { note: 'B', duration: 400, intensity: 0.8 },
+      { note: 'A', duration: 600, intensity: 0.7 },
+      { note: 'G', duration: 800, intensity: 0.6 },
+      { note: 'E', duration: 1000, intensity: 0.5 },
+      { note: 'C', duration: 1200, intensity: 0.4 }
+    ];
+
+    // 🎵 Audio Context Setup
+    let audioContext;
+    let isPlaying = false;
+    let currentNoteIndex = 0;
+    let noteInterval;
+    
+    // 📖 DOM Elements
+    const playButton = document.getElementById('playButton');
+    const conductorText = document.getElementById('conductorText');
+    const keyboard = document.getElementById('keyboard');
+    const musicViz = document.getElementById('musicViz');
+    const storyParagraphs = document.querySelectorAll('.story-paragraph');
+    const pianoKeys = document.querySelectorAll('.piano-key');
+
+    // 🎭 Ghost Orchestra Animation
+    const ghosts = document.querySelectorAll('.music-ghost');
+    ghosts.forEach((ghost, index) => {
+      ghost.style.animationDelay = `${index * 5}s`;
+    });
+
+    // 🎹 Play a Single Note
+    function playNote(noteName, intensity = 0.5, visualOnly = false) {
+      const frequency = notes[noteName];
+      if (!frequency) return;
+
+      // Visual Feedback
+      const key = document.querySelector(`[data-note="${noteName}"]`);
+      if (key) {
+        key.style.transform = 'translateY(5px)';
+        key.style.boxShadow = `0 0 20px ${intensity > 0.7 ? 'var(--passion-red)' : 'var(--soul-spark)'}`;
+        
+        setTimeout(() => {
+          key.style.transform = '';
+          key.style.boxShadow = '';
+        }, 200);
+      }
+
+      // Create Visual Note
+      createVisualNote(noteName, intensity);
+
+      // Play Sound (if not visual only)
+      if (!visualOnly && audioContext) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(intensity * 0.3, audioContext.currentTime + 0.1);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1);
+        
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 1);
+      }
+    }
+
+    // 🎵 Create Visual Music Elements
+    function createVisualNote(noteName, intensity) {
+      // Musical Note Emoji
+      const note = document.createElement('div');
+      note.className = 'musical-note';
+      note.textContent = '♪';
+      note.style.left = `${50 + (Math.random() * 20 - 10)}%`;
+      note.style.bottom = '30%';
+      note.style.color = intensity > 0.7 ? 'var(--passion-red)' : 'var(--soul-spark)';
+      note.style.fontSize = `${1 + intensity * 2}rem`;
+      note.style.opacity = intensity;
+      
+      musicViz.appendChild(note);
+      
+      setTimeout(() => {
+        note.remove();
+      }, 3000);
+
+      // Sound Wave
+      const wave = document.createElement('div');
+      wave.className = 'sound-wave';
+      wave.style.bottom = '30%';
+      wave.style.opacity = intensity * 0.8;
+      
+      musicViz.appendChild(wave);
+      
+      wave.animate([
+        { width: '0%', opacity: intensity * 0.8 },
+        { width: '100%', opacity: 0 }
+      ], {
+        duration: 2000,
+        easing: 'ease-out'
+      }).onfinish = () => wave.remove();
+
+      // Candle Reaction
+      if (intensity > 0.7) {
+        const candles = document.querySelectorAll('.candle-flame');
+        candles.forEach(candle => {
+          const originalScale = candle.style.transform || 'scale(1)';
+          candle.style.transform = 'scale(1.3)';
+          setTimeout(() => {
+            candle.style.transform = originalScale;
+          }, 200);
+        });
+      }
+    }
+
+    // 🎼 Play Rachmaninoff's Theme
+    function playTheme() {
+      if (currentNoteIndex >= rachmaninoffTheme.length) {
+        currentNoteIndex = 0;
+      }
+      
+      const { note, duration, intensity } = rachmaninoffTheme[currentNoteIndex];
+      playNote(note, intensity);
+      
+      // Update conductor text with emotion
+      const emotions = [
+        "Heartbeats finding rhythm",
+        "Longing becoming melody",
+        "Souls in conversation",
+        "Our harmony unfolding"
+      ];
+      conductorText.textContent = emotions[currentNoteIndex % emotions.length];
+      
+      currentNoteIndex++;
+    }
+
+    // 🎭 Play/Pause Control
+    playButton.addEventListener('click', () => {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      if (!isPlaying) {
+        // Start playing
+        isPlaying = true;
+        playButton.classList.add('playing');
+        playButton.style.background = 'rgba(196, 69, 105, 0.3)';
+        conductorText.textContent = "Our Symphony Plays";
+        
+        // Play first note immediately
+        playTheme();
+        
+        // Continue playing
+        noteInterval = setInterval(playTheme, 1000);
+        
+      } else {
+        // Stop playing
+        isPlaying = false;
+        playButton.classList.remove('playing');
+        playButton.style.background = 'rgba(26, 21, 35, 0.8)';
+        conductorText.textContent = "Listen to Our Harmony";
+        
+        clearInterval(noteInterval);
+        currentNoteIndex = 0;
+      }
+    });
+
+    // 🎹 Interactive Keyboard
+    pianoKeys.forEach(key => {
+      key.addEventListener('mousedown', () => {
+        const note = key.dataset.note;
+        const intensity = key.classList.contains('black-key') ? 0.7 : 0.5;
+        playNote(note, intensity, false);
+        
+        // Visual press animation
+        key.animate([
+          { transform: 'translateY(0)' },
+          { transform: 'translateY(5px)' },
+          { transform: 'translateY(0)' }
+        ], {
+          duration: 300,
+          easing: 'ease-out'
+        });
+      });
+      
+      key.addEventListener('mouseenter', () => {
+        if (!isPlaying) {
+          key.style.filter = 'brightness(1.2)';
+        }
+      });
+      
+      key.addEventListener('mouseleave', () => {
+        key.style.filter = '';
+      });
+    });
+
+    // 📖 Story Reveal on Scroll
+    function revealStory() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      storyParagraphs.forEach((para, index) => {
+        const rect = para.getBoundingClientRect();
+        const revealPoint = windowHeight * 0.8;
+        
+        if (rect.top < revealPoint) {
+          setTimeout(() => {
+            para.classList.add('visible');
+          }, index * 200);
+        }
+      });
+      
+      // Piano rises with scroll
+      const stage = document.querySelector('.concert-stage');
+      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.5));
+      stage.style.transform = `translateX(-50%) translateY(${scrollProgress * 50}px)`;
+      stage.style.opacity = 1 - scrollProgress * 0.5;
+    }
+
+    // 🎵 Pre-warm Audio Context on First Interaction
+    function warmAudioContext() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        // Play a silent note to unlock audio
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.001);
+      }
+    }
+
+    // Add interaction listeners
+    document.addEventListener('click', warmAudioContext);
+    document.addEventListener('touchstart', warmAudioContext);
+
+    // Initialize
+    window.addEventListener('scroll', revealStory);
+    window.addEventListener('load', () => {
+      revealStory();
+      
+      // Gentle initial animation
+      requestAnimationFrame(() => {
+        document.body.style.opacity = '1';
+        
+        // Start ghost orchestra
+        ghosts.forEach(ghost => {
+          ghost.style.animation = 'ghostAppear 20s infinite';
+        });
+      });
+    });
+
+    // 🎹 Easter Egg: Play special chord on certain key combinations
+    const secretChord = ['C', 'E', 'G'];
+    let chordProgress = 0;
+    
+    pianoKeys.forEach(key => {
+      key.addEventListener('click', () => {
+        const note = key.dataset.note;
+        
+        if (note === secretChord[chordProgress]) {
+          chordProgress++;
+          
+          if (chordProgress === secretChord.length) {
+            // Play special visual effect
+            createVisualNote('C', 1);
+            createVisualNote('E', 1);
+            createVisualNote('G', 1);
+            
+            // Show hidden message
+            const hiddenMessage = document.createElement('div');
+            hiddenMessage.textContent = "Our Secret Harmony";
+            hiddenMessage.style.position = 'fixed';
+            hiddenMessage.style.top = '50%';
+            hiddenMessage.style.left = '50%';
+            hiddenMessage.style.transform = 'translate(-50%, -50%)';
+            hiddenMessage.style.color = 'var(--gold-leaf)';
+            hiddenMessage.style.fontFamily = 'Dancing Script, cursive';
+            hiddenMessage.style.fontSize = '2rem';
+            hiddenMessage.style.zIndex = '100';
+            hiddenMessage.style.animation = 'fadeInOut 3s ease-in-out';
+            
+            document.body.appendChild(hiddenMessage);
+            setTimeout(() => hiddenMessage.remove(), 3000);
+            
+            chordProgress = 0;
+          }
+        } else {
+          chordProgress = 0;
+        }
+      });
+    });
+
+    // Navigation Functions
+    function goToPage(page) {
+      // Add page transition effect
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        window.location.href = page;
+      }, 500);
+    }
+
+    // Update active dot based on current page
+    const currentPage = window.location.pathname.split('/').pop();
+    const dots = document.querySelectorAll('.nav-dot');
+    const pageMap = {
+      'Our Beginning.html': 0,
+      'Our Harmony.html': 1,
+      'Our Minds.html': 2,
+      'Our Forever.html': 3
+    };
+
+    if (pageMap[currentPage] !== undefined) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[pageMap[currentPage]].classList.add('active');
+    }
+
+    // Keyboard navigation for pages
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        goToPage('Our Beginning.html');
+      } else if (e.key === 'ArrowRight') {
+        goToPage('Our Minds.html');
+      }
+    });
+  </script>
+</body>
+</html>
