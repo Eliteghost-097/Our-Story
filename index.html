@@ -14,18 +14,18 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(135deg, #1B3B2D 0%, #2A1B3D 50%, #1A1523 100%);
             font-family: 'Inter', sans-serif;
             color: #F7F3E3;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             padding: 2rem;
             position: relative;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .love-particles {
@@ -47,6 +47,11 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem 0;
         }
 
         .main-title {
@@ -172,14 +177,37 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .title-container {
+                min-height: auto;
+                padding: 1rem 0;
+                justify-content: flex-start;
+            }
+            
+            .main-title {
+                margin-top: 1rem;
+            }
+            
+            .subtitle {
+                margin-bottom: 2rem;
+            }
+            
             .journey-menu {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                margin-top: 2rem;
             }
             
             .journey-card {
                 min-height: 150px;
                 padding: 1.5rem;
+            }
+            
+            .begin-btn {
+                margin: 2rem 0 3rem 0;
             }
         }
     </style>
